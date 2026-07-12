@@ -1,0 +1,136 @@
+{
+  "id": "japan",
+  "name": "Japan",
+  "officialName": "Japan",
+  "region": "Asia",
+  "subregion": "Eastern Asia",
+  "capital": {
+    "name": "Tokyo",
+    "shortDescription": "A vast, fast-moving capital where precision, pop culture, craft, and quiet ritual coexist."
+  },
+  "aliases": ["Nippon", "Nihon"],
+  "quiz": {
+    "clueTypes": ["shape", "flag", "monument", "food", "music", "text"],
+    "prompts": [
+      {
+        "type": "text",
+        "prompt": "Which country is associated with manga, sushi, and Mount Fuji?",
+        "correctAnswerId": "japan",
+        "distractorIds": ["china", "south-korea", "thailand"],
+        "difficulty": 1
+      },
+      {
+        "type": "food",
+        "prompt": "Ramen, sushi, and matcha are strongly associated with which country?",
+        "correctAnswerId": "japan",
+        "distractorIds": ["china", "vietnam", "philippines"],
+        "difficulty": 1
+      },
+      {
+        "type": "monument",
+        "prompt": "Mount Fuji is one of the most recognizable symbols of which country?",
+        "correctAnswerId": "japan",
+        "distractorIds": ["china", "nepal", "mongolia"],
+        "difficulty": 1
+      }
+    ]
+  },
+  "reveal": {
+    "intro": "Japan can feel precise, playful, quiet, and overwhelming all at once. Ritual and pop culture, neighborhood intimacy and world-making imagination all sit side by side.",
+    "heroImage": {
+      "src": "/images/countries/japan/hero.jpg",
+      "alt": "Tokyo skyline with lights and urban density"
+    },
+    "funFacts": [
+      "Japan is made up of thousands of islands, though most of the population lives on four main ones.",
+      "Its design traditions stretch from centuries-old craft to contemporary visual worlds that shape global taste.",
+      "Seasonal attention, from cherry blossoms to autumn leaves, is not just scenic but built into everyday rhythms."
+    ]
+  },
+  "cards": {
+    "taste": {
+      "title": "TASTE",
+      "items": [
+        {
+          "name": "Onigiri",
+          "description": "Rice shaped by hand into a portable, comforting everyday food that can be simple, perfect, and oddly moving in its restraint.",
+          "whyItMatters": "Onigiri says something essential about Japanese everyday life: practicality, care, detail, and quiet pleasure.",
+          "recipeLink": "TBD"
+        }
+      ]
+    },
+    "listen": {
+      "title": "LISTEN",
+      "items": [
+        {
+          "name": "Haruomi Hosono",
+          "era": "classic",
+          "description": "A foundational figure in Japanese popular music whose work feels playful, sophisticated, and still startlingly fresh.",
+          "listenLink": "TBD"
+        },
+        {
+          "name": "Hikaru Utada",
+          "era": "modern",
+          "description": "A defining modern artist whose work bridges pop, introspection, and cross-generational appeal.",
+          "listenLink": "TBD"
+        }
+      ]
+    },
+    "read": {
+      "title": "READ",
+      "items": [
+        {
+          "name": "Kitchen",
+          "creator": "Banana Yoshimoto",
+          "description": "A tender, lucid novel that makes ordinary interiors, grief, appetite, and closeness feel quietly luminous.",
+          "buyLink": "TBD"
+        }
+      ]
+    },
+    "see": {
+      "title": "SEE",
+      "items": [
+        {
+          "name": "Naoshima",
+          "description": "A small island known for contemporary art, architecture, and a way of making landscape, museums, and design feel like one continuous experience.",
+          "whyItMatters": "It offers a less default image of Japan and makes the country's relationship to art, place, and design feel unusually tangible."
+        }
+      ]
+    },
+    "create": {
+      "title": "CREATE",
+      "items": [
+        {
+          "name": "Yayoi Kusama",
+          "type": "contemporary art",
+          "description": "A globally influential artist whose installations turn repetition, color, and obsession into unforgettable visual worlds."
+        }
+      ]
+    },
+    "capitalSpotlight": {
+      "title": "Capital Spotlight",
+      "items": [
+        {
+          "name": "Tokyo",
+          "description": "Tokyo moves between neon intensity and quiet ritual, with neighborhoods that can feel futuristic, fashionable, traditional, or deeply local from one train stop to the next."
+        }
+      ]
+    }
+  },
+  "media": {
+    "gallery": [
+      {
+        "src": "/images/countries/japan/gallery-1.jpg",
+        "alt": "Cherry blossoms in Japan"
+      }
+    ]
+  },
+  "meta": {
+    "status": "draft",
+    "difficulty": 1,
+    "popularity": 5,
+    "lastReviewed": "2026-07-11",
+    "tags": ["asia", "design", "food", "music", "craft"],
+    "curationBalance": ["iconic", "everyday", "contemporary", "artistic", "unexpected"]
+  }
+}

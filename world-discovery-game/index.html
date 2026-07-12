@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Country World · Lebanon Media Prototype</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="quiz-view" id="quiz-view">
+        <div class="quiz-card">
+          <div class="quiz-stage">
+            <div class="quiz-copy">
+              <p class="eyebrow">Country World</p>
+              <div class="quiz-status">
+                <span class="score-chip">Score <strong id="score-value">-</strong></span>
+              </div>
+              <h1>Which country is this?</h1>
+              <p class="quiz-helper">See the clue, decide fast, then unlock the country.</p>
+            </div>
+
+            <div class="quiz-panel">
+              <div class="quiz-clue" id="quiz-clue"></div>
+
+              <div class="answer-grid" id="answer-grid"></div>
+              <p class="result-line" id="result-line"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="discovery-view" id="discovery-view">
+        <header class="country-header">
+          <div>
+            <p class="eyebrow">Country Unlocked</p>
+            <h2>Welcome to <span id="country-name">Lebanon</span></h2>
+            <p class="country-subtitle">What do you want to discover?</p>
+          </div>
+          <div class="header-actions">
+            <button class="next-button" id="passport-button" type="button">
+              Open passport
+            </button>
+            <button class="next-button" id="next-button" type="button">
+              Next country
+            </button>
+          </div>
+        </header>
+
+        <nav class="discovery-nav" id="discovery-nav">
+          <button class="discovery-chip active" data-key="taste" type="button">TASTE</button>
+          <button class="discovery-chip" data-key="listen" type="button">LISTEN</button>
+          <button class="discovery-chip" data-key="read" type="button">READ</button>
+          <button class="discovery-chip" data-key="see" type="button">SEE</button>
+          <button class="discovery-chip" data-key="create" type="button">CREATE</button>
+        </nav>
+
+        <section class="content-pane">
+          <div class="media-column">
+            <div class="media-frame" id="media-frame"></div>
+          </div>
+
+          <aside class="content-column">
+            <div class="content-card">
+              <p class="eyebrow" id="content-verb">TASTE</p>
+              <h3 id="content-title">Man'oushe</h3>
+              <p class="content-copy" id="content-copy"></p>
+              <p class="content-note" id="content-note"></p>
+              <div class="alternate-strip" id="alternate-strip"></div>
+            </div>
+          </aside>
+        </section>
+      </section>
+
+      <section class="passport-screen hidden" id="passport-screen" aria-hidden="true">
+        <div class="passport-shell">
+          <header class="passport-header">
+            <div>
+              <p class="eyebrow">Passport</p>
+              <h2>Your World</h2>
+              <p class="passport-subtitle">Unlocked countries live here. Open one to jump back into its discoveries.</p>
+            </div>
+            <button class="next-button" id="close-passport-button" type="button">
+              Back to country
+            </button>
+          </header>
+
+          <section class="passport-hero">
+            <div class="passport-atlas">
+              <div class="passport-globe"></div>
+              <div class="passport-route passport-route-one"></div>
+              <div class="passport-route passport-route-two"></div>
+              <div class="passport-stamp passport-stamp-one">LB</div>
+            </div>
+
+            <div class="passport-summary">
+              <div class="passport-stats large">
+                <div class="stat-chip">
+                  <span>Unlocked</span>
+                  <strong id="passport-country-count">0</strong>
+                </div>
+                <div class="stat-chip">
+                  <span>Current</span>
+                  <strong id="passport-active-country">-</strong>
+                </div>
+                <div class="stat-chip">
+                  <span>Discoveries</span>
+                  <strong id="passport-discovery-count">0</strong>
+                </div>
+              </div>
+              <p class="passport-note" id="passport-note">Your passport will fill out as more countries are unlocked.</p>
+            </div>
+          </section>
+
+          <section class="passport-library">
+            <div class="passport-panel">
+              <p class="eyebrow">Unlocked Countries</p>
+              <div class="passport-map" id="passport-map">
+                <p class="passport-empty">Unlock a country to add it to your passport.</p>
+              </div>
+            </div>
+
+            <div class="passport-panel">
+              <p class="eyebrow">Country Library</p>
+              <div class="passport-library-list" id="passport-library-list"></div>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

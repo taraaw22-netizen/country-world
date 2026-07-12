@@ -1,0 +1,130 @@
+{
+  "id": "lebanon",
+  "name": "Lebanon",
+  "officialName": "Lebanese Republic",
+  "region": "Middle East",
+  "subregion": "Western Asia",
+  "capital": {
+    "name": "Beirut",
+    "shortDescription": "A layered coastal capital known for food, music, publishing, nightlife, and a distinctive Mediterranean-Arab energy."
+  },
+  "aliases": ["Liban"],
+  "quiz": {
+    "clueTypes": ["shape", "flag", "monument", "food", "music", "text"],
+    "prompts": [
+      {
+        "type": "text",
+        "prompt": "Warm flatbread dusted with za'atar. A band that made Arab indie feel sharper, riskier, and more alive. A small Mediterranean country with a cedar on its flag. Which country is it?",
+        "correctAnswerId": "lebanon",
+        "distractorIds": ["syria", "jordan", "greece"],
+        "difficulty": 1
+      },
+      {
+        "type": "food",
+        "prompt": "This country is often associated with tabbouleh, kibbeh, and long mezze tables. Which is it?",
+        "correctAnswerId": "lebanon",
+        "distractorIds": ["turkey", "syria", "egypt"],
+        "difficulty": 1
+      },
+      {
+        "type": "music",
+        "prompt": "Fairuz is one of the most beloved voices connected to which country?",
+        "correctAnswerId": "lebanon",
+        "distractorIds": ["syria", "iraq", "tunisia"],
+        "difficulty": 1
+      }
+    ]
+  },
+  "reveal": {
+    "intro": "Lebanon feels intimate and expansive at once: mountain and sea, morning music and late-night city energy, generous food and sharp artistic presence. Its cultural footprint is much larger than its size suggests.",
+    "heroImage": {
+      "src": "/images/countries/lebanon/hero.jpg",
+      "alt": "Beirut waterfront with the city and Mediterranean in view"
+    },
+    "funFacts": [
+      "The cedar tree has symbolized Lebanon for centuries and still anchors the country's visual identity.",
+      "In many Arab homes, Fairuz is part of the sound of morning, not just a historical singer on a playlist.",
+      "Beirut has long carried a reputation for publishing, nightlife, and cultural intensity well beyond its size."
+    ]
+  },
+  "cards": {
+    "taste": {
+      "title": "TASTE",
+      "items": [
+        {
+          "name": "Man'oushe",
+          "description": "Warm flatbread baked with za'atar or cheese and eaten in the kind of everyday way that tells you more about a place than a banquet ever could.",
+          "whyItMatters": "This is the kind of breakfast that makes Lebanon feel immediate and lived-in: quick, fragrant, comforting, and communal.",
+          "recipeLink": "TBD"
+        }
+      ]
+    },
+    "listen": {
+      "title": "LISTEN",
+      "items": [
+        {
+          "name": "Mashrou' Leila",
+          "era": "modern",
+          "description": "Sharp, literate, restless, and emotionally exposed, Mashrou' Leila opened up a contemporary sound that felt urban, intimate, confrontational, and unmistakably alive.",
+          "listenLink": "TBD"
+        }
+      ]
+    },
+    "read": {
+      "title": "READ",
+      "items": [
+        {
+          "name": "An Unnecessary Woman",
+          "creator": "Rabih Alameddine",
+          "description": "A brilliant, solitary woman in Beirut, a lifetime of reading, and a city felt through intellect, memory, and mood.",
+          "buyLink": "TBD"
+        }
+      ]
+    },
+    "see": {
+      "title": "SEE",
+      "items": [
+        {
+          "name": "Jeita Grotto",
+          "description": "A limestone cave system of cathedral-like chambers and underground water that feels almost unreal the first time you see it.",
+          "whyItMatters": "It widens the picture of Lebanon beyond city life and ruins, into something geologic, luminous, and almost mythic."
+        }
+      ]
+    },
+    "create": {
+      "title": "CREATE",
+      "items": [
+        {
+          "name": "Saloua Raouda Choucair",
+          "type": "sculpture",
+          "description": "A pioneering modern artist whose abstract forms made Arab modernism feel architectural, rhythmic, and unmistakably her own."
+        }
+      ]
+    },
+    "capitalSpotlight": {
+      "title": "Capital Spotlight",
+      "items": [
+        {
+          "name": "Beirut",
+          "description": "Beirut is a city of sea views, layered history, book culture, nightlife, and restaurants that make food feel like a social art."
+        }
+      ]
+    }
+  },
+  "media": {
+    "gallery": [
+      {
+        "src": "/images/countries/lebanon/gallery-1.jpg",
+        "alt": "Cedar trees in Lebanon"
+      }
+    ]
+  },
+  "meta": {
+    "status": "draft",
+    "difficulty": 1,
+    "popularity": 4,
+    "lastReviewed": "2026-07-11",
+    "tags": ["middle-east", "mediterranean", "music", "food", "literature"],
+    "curationBalance": ["iconic", "everyday", "contemporary", "artistic", "unexpected"]
+  }
+}

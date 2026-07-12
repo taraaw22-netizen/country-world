@@ -1,0 +1,136 @@
+{
+  "id": "mexico",
+  "name": "Mexico",
+  "officialName": "United Mexican States",
+  "region": "North America",
+  "subregion": "Northern America",
+  "capital": {
+    "name": "Mexico City",
+    "shortDescription": "A vast capital of museums, street food, murals, music, and layered pre-Hispanic and modern urban life."
+  },
+  "aliases": ["Estados Unidos Mexicanos"],
+  "quiz": {
+    "clueTypes": ["shape", "flag", "monument", "food", "music", "text"],
+    "prompts": [
+      {
+        "type": "text",
+        "prompt": "Which country is associated with Frida Kahlo, tacos, and mariachi?",
+        "correctAnswerId": "mexico",
+        "distractorIds": ["spain", "peru", "colombia"],
+        "difficulty": 1
+      },
+      {
+        "type": "food",
+        "prompt": "Tamales, mole, and tacos are strongly associated with which country?",
+        "correctAnswerId": "mexico",
+        "distractorIds": ["spain", "argentina", "philippines"],
+        "difficulty": 1
+      },
+      {
+        "type": "text",
+        "prompt": "Frida Kahlo is most closely associated with which country?",
+        "correctAnswerId": "mexico",
+        "distractorIds": ["spain", "italy", "brazil"],
+        "difficulty": 1
+      }
+    ]
+  },
+  "reveal": {
+    "intro": "Mexico feels expansive, sensorial, and deeply made by region. Food, public art, street life, architecture, and memory all arrive with unusual force.",
+    "heroImage": {
+      "src": "/images/countries/mexico/hero.jpg",
+      "alt": "Historic urban streetscape in Mexico with color and architecture"
+    },
+    "funFacts": [
+      "Mexican cuisine is shaped by strong regional traditions, so dishes and flavors vary widely across the country.",
+      "Mexico has one of the richest mural traditions in the world, tying art directly to public space and civic memory.",
+      "Its capital is one of the largest cities in the world and one of the most museum-rich."
+    ]
+  },
+  "cards": {
+    "taste": {
+      "title": "TASTE",
+      "items": [
+        {
+          "name": "Tacos al pastor",
+          "description": "Thin-sliced pork carved from a spit, tucked into tortillas, and brightened with pineapple, onion, and salsa.",
+          "whyItMatters": "They carry migration, city life, and pure craveability all at once, making them one of the most immediate ways into Mexico's everyday food culture.",
+          "recipeLink": "TBD"
+        }
+      ]
+    },
+    "listen": {
+      "title": "LISTEN",
+      "items": [
+        {
+          "name": "Chavela Vargas",
+          "era": "classic",
+          "description": "A singular voice whose stripped-back ranchera performances feel raw, intimate, and impossible to mistake for anyone else.",
+          "listenLink": "TBD"
+        },
+        {
+          "name": "Natalia Lafourcade",
+          "era": "modern",
+          "description": "A contemporary artist whose music blends intimacy, craft, and a deep connection to Latin American musical traditions.",
+          "listenLink": "TBD"
+        }
+      ]
+    },
+    "read": {
+      "title": "READ",
+      "items": [
+        {
+          "name": "Pedro Paramo",
+          "creator": "Juan Rulfo",
+          "description": "A short, haunting novel whose atmosphere and voice have influenced generations of writers far beyond Mexico.",
+          "buyLink": "TBD"
+        }
+      ]
+    },
+    "see": {
+      "title": "SEE",
+      "items": [
+        {
+          "name": "Coyoacan",
+          "description": "A historic district in Mexico City where tree-lined streets, markets, cafes, color, and artistic memory all fold into each other.",
+          "whyItMatters": "It gives a more lived-in image of Mexico than a single monument and makes the country's urban texture feel tangible."
+        }
+      ]
+    },
+    "create": {
+      "title": "CREATE",
+      "items": [
+        {
+          "name": "Frida Kahlo",
+          "type": "painting",
+          "description": "A globally recognizable artist whose work turns pain, style, symbolism, and self-fashioning into an unmistakable visual language."
+        }
+      ]
+    },
+    "capitalSpotlight": {
+      "title": "Capital Spotlight",
+      "items": [
+        {
+          "name": "Mexico City",
+          "description": "Mexico City is a layered cultural giant, full of museums, street food, muralism, parks, markets, and neighborhoods with distinct personalities."
+        }
+      ]
+    }
+  },
+  "media": {
+    "gallery": [
+      {
+        "src": "/images/countries/mexico/gallery-1.jpg",
+        "alt": "Colorful street scene in Mexico"
+      }
+    ]
+  },
+  "meta": {
+    "status": "draft",
+    "difficulty": 1,
+    "popularity": 5,
+    "lastReviewed": "2026-07-11",
+    "tags": ["north-america", "food", "art", "music", "history"],
+    "curationBalance": ["iconic", "everyday", "contemporary", "artistic", "unexpected"]
+  }
+}
