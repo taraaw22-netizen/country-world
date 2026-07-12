@@ -146,7 +146,7 @@ const QUESTION_BANK = [
     answerCountry: "Mexico",
     render: () => `
       <div class="clue-card-region">
-        <div class="clue-flag-emoji" aria-label="Flag of Mexico">🇲🇽</div>
+        <img class="clue-flag-image" src="./assets/media/flag-mexico.png" alt="Flag of Mexico" />
       </div>`,
     test: (country) => country === "Mexico",
   },
@@ -166,35 +166,37 @@ const QUESTION_BANK = [
     test: (country) => COUNTRY_DATA[country]?.capital === "Mexico City" || country === "Mexico",
   },
   {
-    type: "food",
-    prompt: "Which country is this food strongly associated with?",
-    options: ["Mexico", "Peru", "Chile", "Argentina"],
+    type: "shape",
+    prompt: "Which country's outline is this?",
+    options: ["Mexico", "Brazil", "Chile", "Peru"],
     answerCountry: "Mexico",
     render: () => `
-      <div class="clue-card-region">
-        <img class="clue-flag-image" src="./assets/media/tacos-al-pastor.jpg" alt="Tacos al pastor" />
-      </div>`,
-    test: (country) => country === "Mexico",
-  },
-  {
-    type: "place",
-    prompt: "Which country is this place in?",
-    options: ["Mexico", "Spain", "Italy", "Brazil"],
-    answerCountry: "Mexico",
-    render: () => `
-      <div class="clue-card-region">
-        <img class="clue-flag-image" src="./assets/media/palacio-de-bellas-artes.jpg" alt="Palacio de Bellas Artes" />
-      </div>`,
-    test: (country) => country === "Mexico",
-  },
-  {
-    type: "art",
-    prompt: "Which country is this artist most closely associated with?",
-    options: ["Mexico", "Spain", "France", "Argentina"],
-    answerCountry: "Mexico",
-    render: () => `
-      <div class="clue-card-region">
-        <img class="clue-flag-image" src="./assets/media/frida-kahlo.jpg" alt="Frida Kahlo" />
+      <div class="clue-card-region shape">
+        <svg viewBox="0 0 320 240" width="320" height="240" aria-label="Mexico outline">
+          <path
+            d="M45 78 L68 52 L90 43 L111 54 L125 76 L143 84 L151 105 L170 114 L188 129 L212 130 L239 143 L257 160 L275 163 L293 181 L289 198 L268 195 L247 180 L230 178 L214 163 L193 160 L178 171 L157 169 L141 157 L126 161 L114 183 L95 193 L75 184 L63 166 L49 155 L42 136 L30 124 L27 103 L35 89 Z"
+            fill="#6ab7ff"
+            stroke="#16385a"
+            stroke-width="6"
+            stroke-linejoin="round"
+            stroke-linecap="round"
+          />
+          <path
+            d="M60 184 L73 195 L81 220 L73 229 L61 219 L54 203 Z"
+            fill="#6ab7ff"
+            stroke="#16385a"
+            stroke-width="6"
+            stroke-linejoin="round"
+            stroke-linecap="round"
+          />
+          <path
+            d="M220 176 L239 183 L250 201 L240 210 L225 203 L217 188 Z"
+            fill="#6ab7ff"
+            stroke="#16385a"
+            stroke-width="6"
+            stroke-linejoin="round"
+            stroke-linecap="round"
+          />
       </div>`,
     test: (country) => country === "Mexico",
   },

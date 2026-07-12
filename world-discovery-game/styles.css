@@ -248,7 +248,7 @@ h1 {
 .clue-flag-image {
   width: min(78%, 420px);
   aspect-ratio: 3 / 2;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 22px;
   overflow: hidden;
   box-shadow: 0 14px 0 rgba(22, 56, 90, 0.08);
@@ -398,8 +398,10 @@ h1 {
   width: 100%;
   height: 430px;
   border: 0;
-  object-fit: cover;
-  background: #d9eefb;
+  object-fit: contain;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(255,255,255,0.95), rgba(255,255,255,0.86)),
+    linear-gradient(180deg, #fdf8ed 0%, #fff 100%);
 }
 
 .media-meta {
