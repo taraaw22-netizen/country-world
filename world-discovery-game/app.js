@@ -104,42 +104,6 @@ const QUESTION_BANK = [
     test: (country) => country === "Lebanon",
   },
   {
-    type: "symbol",
-    prompt: "Which country's flag features a cedar tree?",
-    options: ["Lebanon", "Jordan", "Syria", "Greece"],
-    answerCountry: "Lebanon",
-    render: () => `
-      <div class="clue-card-text symbol">
-        <div>
-          <span class="eyebrow">National Symbol</span>
-          <div class="clue-symbol">🌲</div>
-          <strong>Cedar Tree</strong>
-        </div>
-      </div>`,
-    test: (country) => COUNTRY_DATA[country].flagHasCedar,
-  },
-  {
-    type: "borders",
-    prompt: "Which country borders Syria and Israel and faces the Mediterranean?",
-    options: ["Lebanon", "Jordan", "Syria", "Greece"],
-    answerCountry: "Lebanon",
-    render: () => `
-      <div class="clue-card-text borders">
-        <div>
-          <span class="eyebrow">Geography</span>
-          <div class="clue-tags">
-            <span class="clue-tag">Syria</span>
-            <span class="clue-tag">Israel</span>
-            <span class="clue-tag">Mediterranean</span>
-          </div>
-        </div>
-      </div>`,
-    test: (country) =>
-      COUNTRY_DATA[country].borders.includes("Syria") &&
-      COUNTRY_DATA[country].borders.includes("Israel") &&
-      COUNTRY_DATA[country].coast === "Mediterranean",
-  },
-  {
     type: "flag",
     prompt: "Which country's flag is this?",
     options: ["Mexico", "Spain", "Peru", "Colombia"],
@@ -172,31 +136,7 @@ const QUESTION_BANK = [
     answerCountry: "Mexico",
     render: () => `
       <div class="clue-card-region shape">
-        <svg viewBox="0 0 320 240" width="320" height="240" aria-label="Mexico outline">
-          <path
-            d="M45 78 L68 52 L90 43 L111 54 L125 76 L143 84 L151 105 L170 114 L188 129 L212 130 L239 143 L257 160 L275 163 L293 181 L289 198 L268 195 L247 180 L230 178 L214 163 L193 160 L178 171 L157 169 L141 157 L126 161 L114 183 L95 193 L75 184 L63 166 L49 155 L42 136 L30 124 L27 103 L35 89 Z"
-            fill="#6ab7ff"
-            stroke="#16385a"
-            stroke-width="6"
-            stroke-linejoin="round"
-            stroke-linecap="round"
-          />
-          <path
-            d="M60 184 L73 195 L81 220 L73 229 L61 219 L54 203 Z"
-            fill="#6ab7ff"
-            stroke="#16385a"
-            stroke-width="6"
-            stroke-linejoin="round"
-            stroke-linecap="round"
-          />
-          <path
-            d="M220 176 L239 183 L250 201 L240 210 L225 203 L217 188 Z"
-            fill="#6ab7ff"
-            stroke="#16385a"
-            stroke-width="6"
-            stroke-linejoin="round"
-            stroke-linecap="round"
-          />
+        <img class="clue-flag-image" src="./assets/media/mexico-outline.png" alt="Mexico outline map" />
       </div>`,
     test: (country) => country === "Mexico",
   },
@@ -227,35 +167,38 @@ const QUESTION_BANK = [
     test: (country) => COUNTRY_DATA[country]?.capital === "Tokyo" || country === "Japan",
   },
   {
-    type: "food",
-    prompt: "Which country is this food strongly associated with?",
-    options: ["Japan", "China", "Vietnam", "Thailand"],
-    answerCountry: "Japan",
-    render: () => `
-      <div class="clue-card-region">
-        <img class="clue-flag-image" src="./assets/media/onigiri.jpg" alt="Onigiri" />
-      </div>`,
-    test: (country) => country === "Japan",
-  },
-  {
-    type: "place",
-    prompt: "Which country is this place in?",
+    type: "shape",
+    prompt: "Which country's outline is this?",
     options: ["Japan", "South Korea", "China", "Thailand"],
     answerCountry: "Japan",
     render: () => `
-      <div class="clue-card-region">
-        <img class="clue-flag-image" src="./assets/media/naoshima.jpg" alt="Naoshima" />
-      </div>`,
-    test: (country) => country === "Japan",
-  },
-  {
-    type: "art",
-    prompt: "Which country is this artist most closely associated with?",
-    options: ["Japan", "China", "France", "United States"],
-    answerCountry: "Japan",
-    render: () => `
-      <div class="clue-card-region">
-        <img class="clue-flag-image" src="./assets/media/yayoi-kusama.jpg" alt="Yayoi Kusama" />
+      <div class="clue-card-region shape">
+        <svg viewBox="0 0 220 240" width="220" height="240" aria-label="Japan outline">
+          <path
+            d="M112 22 L126 40 L131 62 L121 78 L125 95 L115 114 L122 132 L117 149 L104 160 L98 177 L86 192 L69 204 L52 188 L55 167 L47 148 L54 132 L50 112 L60 95 L58 78 L67 61 L80 43 L95 31 Z"
+            fill="#6ab7ff"
+            stroke="#16385a"
+            stroke-width="6"
+            stroke-linejoin="round"
+            stroke-linecap="round"
+          />
+          <path
+            d="M137 64 L153 74 L160 90 L152 105 L155 120 L145 133 L133 128 L129 109 L132 92 L130 78 Z"
+            fill="#6ab7ff"
+            stroke="#16385a"
+            stroke-width="6"
+            stroke-linejoin="round"
+            stroke-linecap="round"
+          />
+          <path
+            d="M154 136 L170 144 L176 160 L170 172 L158 168 L152 153 Z"
+            fill="#6ab7ff"
+            stroke="#16385a"
+            stroke-width="6"
+            stroke-linejoin="round"
+            stroke-linecap="round"
+          />
+        </svg>
       </div>`,
     test: (country) => country === "Japan",
   },
