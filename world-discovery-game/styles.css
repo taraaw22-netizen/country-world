@@ -644,6 +644,29 @@ h1 {
     linear-gradient(180deg, #b7e8ff 0%, #fff0b1 100%);
 }
 
+.passport-atlas-label {
+  position: absolute;
+  left: 22px;
+  top: 18px;
+  z-index: 2;
+  display: grid;
+  gap: 4px;
+  max-width: 220px;
+}
+
+.passport-atlas-label span {
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  font-family: var(--font-display);
+}
+
+.passport-atlas-label strong {
+  font-size: 1.05rem;
+  line-height: 1.2;
+}
+
 .passport-globe {
   position: absolute;
   width: 220px;

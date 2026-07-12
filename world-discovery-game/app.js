@@ -728,6 +728,33 @@ const COUNTRY_EXTRAS = {
   ],
   Mexico: [
     {
+      type: "taste",
+      title: "Mole Poblano",
+      verb: "TASTE",
+      copy:
+        "Mole poblano is layered, dark, and celebratory, with chiles, chocolate, nuts, and spice pulling in different directions at once.",
+      note: "Why this pick: it gives Mexico a second food mood that feels deeper and more ceremonial.",
+      externalLabel: "Watch how it's made",
+      externalUrl: "https://www.youtube.com/results?search_query=mole+poblano+recipe",
+      media: () => `
+        <div class="media-card">
+          <img src="./assets/media/mole-poblano.jpg" alt="Mole poblano" />
+          <div class="media-meta">
+            <strong>Mole poblano</strong>
+            <p>Rich, layered, and a little mysterious in the best way.</p>
+            <div class="recipe-mini">
+              <p><strong>Simple version</strong></p>
+              <p>1. Toast and blend chiles, seeds, and spices.</p>
+              <p>2. Simmer with broth, nuts, and a little chocolate.</p>
+              <p>3. Spoon over chicken or turkey and serve with rice.</p>
+            </div>
+            <a class="inline-link" href="https://www.youtube.com/results?search_query=mole+poblano+recipe" target="_blank" rel="noreferrer noopener">
+              Watch recipe videos
+            </a>
+          </div>
+        </div>`,
+    },
+    {
       type: "listen",
       title: "Chavela Vargas",
       verb: "LISTEN",
@@ -813,6 +840,27 @@ const COUNTRY_EXTRAS = {
     },
   ],
   Japan: [
+    {
+      type: "see",
+      title: "Tokyo Tower",
+      verb: "SEE",
+      copy:
+        "Tokyo Tower gives Japan a second place lane that feels iconic, urban, and easy to recognize at a glance.",
+      note: "Why this pick: it adds a clear second city image to Naoshima's art-island mood.",
+      externalLabel: "Open map",
+      externalUrl: "https://www.google.com/maps/search/Tokyo+Tower",
+      media: () => `
+        <div class="media-card">
+          <img src="./assets/media/tokyo-tower.jpg" alt="Tokyo Tower" />
+          <div class="media-meta">
+            <strong>Tokyo Tower</strong>
+            <p>A bold city landmark that reads immediately.</p>
+            <a class="inline-link" href="https://www.google.com/maps/search/Tokyo+Tower" target="_blank" rel="noreferrer noopener">
+              Open map
+            </a>
+          </div>
+        </div>`,
+    },
     {
       type: "listen",
       title: "Haruomi Hosono",
@@ -1104,6 +1152,7 @@ const storageKey = "country-world-media-passport";
 
 const state = {
   question: null,
+  questionQueue: [],
   answered: false,
   missedQuestion: false,
   roundScore: null,
@@ -1172,8 +1221,11 @@ function boot() {
 }
 
 function pickQuestion() {
-  const validQuestions = QUESTION_BANK.filter(isValidQuestion);
-  state.question = validQuestions[Math.floor(Math.random() * validQuestions.length)];
+  if (!state.questionQueue.length) {
+    state.questionQueue = shuffle(QUESTION_BANK.filter(isValidQuestion));
+  }
+
+  state.question = state.questionQueue.shift();
 }
 
 function isValidQuestion(question) {
