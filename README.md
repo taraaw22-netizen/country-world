@@ -2,6 +2,8 @@
 
 Country World is a playful cultural discovery game. The quiz is the hook, but the product is a media-first way to get curious about countries through real food, music, books, places, and art.
 
+The current playable prototype lives in `world-discovery-game/`, and all local media assets are stored in `world-discovery-game/assets/media/`.
+
 ## Core Loop
 
 1. The player sees a fast, visual clue and guesses a country.
@@ -121,3 +123,64 @@ The passport is not just a collection log. It is a map of countries the player h
 ## Status
 
 This repository contains the current prototype and the working content/docs foundation for the broader Country World product.
+
+## Recent Changes
+
+- The quiz is now restricted to three clue types only:
+  - `shape`
+  - `flag`
+  - `capital`
+- Every quiz question is validated so only one answer fully satisfies the clue.
+- The prototype uses real media in the main content pane instead of text-only placeholders.
+- Media sizing has been adjusted so book covers, artwork, flags, and video embeds show fully instead of being awkwardly cropped.
+- The passport behaves like a country map of unlocked places, not a duplicate log of the same country.
+- The bottom "more from Lebanon" experience was folded into the country discovery flow so the content stays in one place.
+- The local image folder is:
+  - `world-discovery-game/assets/media/`
+
+## Current Content Snapshot
+
+### Lebanon
+
+- Quiz clues: Lebanon flag, Lebanon outline, Beirut capital
+- Discovery categories:
+  - `TASTE` - Man'oushe
+  - `LISTEN` - Mashrou' Leila
+  - `READ` - An Unnecessary Woman
+  - `SEE` - Jeita Grotto
+  - `CREATE` - Saloua Raouda Choucair
+- Alternates currently include:
+  - Fairuz
+  - Raouche Rocks
+  - Knefeh
+  - The Rock of Tanios
+  - Etel Adnan
+
+### Mexico
+
+- Quiz clues: Mexico flag, Mexico outline, Mexico City capital
+- Discovery categories:
+  - `TASTE` - Tacos al pastor
+  - `LISTEN` - Natalia Lafourcade
+  - `READ` - Pedro Páramo
+  - `SEE` - Palacio de Bellas Artes
+  - `CREATE` - Frida Kahlo
+- Alternates currently include:
+  - Mole Poblano
+  - Chavela Vargas
+  - Aura
+  - Coyoacán
+  - Diego Rivera
+
+### Japan
+
+- Quiz clues: Japan flag, Japan outline, Tokyo capital
+- Discovery categories:
+  - `TASTE` - Onigiri
+  - `LISTEN` - Hikaru Utada
+  - `READ` - Kitchen
+  - `SEE` - Naoshima
+  - `CREATE` - Yayoi Kusama
+- Alternates currently include:
+  - Haruomi Hosono
+  - Takashi Murakami
