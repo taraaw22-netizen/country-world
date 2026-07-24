@@ -91,15 +91,7 @@ const QUESTION_BANK = [
     answerCountry: "Lebanon",
     render: () => `
       <div class="clue-card-region shape">
-        <svg viewBox="0 0 180 260" width="180" height="260" aria-label="Lebanon outline">
-          <polygon
-            points="85.4,214.9 59.4,216.8 50.4,242.0 18.0,241.7 52.5,124.5 100.7,23.0 102.6,18.0 146.1,25.3 162.0,81.8 109.1,136.1 85.4,214.9"
-            fill="#6ab7ff"
-            stroke="#16385a"
-            stroke-width="6"
-            stroke-linejoin="round"
-          />
-        </svg>
+        <img class="clue-map-image" src="./assets/media/lebanon-region-map.svg" alt="Map showing the outline and regions of Lebanon" />
       </div>`,
     test: (country) => country === "Lebanon",
   },
@@ -1132,6 +1124,9 @@ const ui = {
   passportDiscoveryCount: document.querySelector("#passport-discovery-count"),
   passportNote: document.querySelector("#passport-note"),
   passportLibraryList: document.querySelector("#passport-library-list"),
+  passportAtlasPhoto: document.querySelector("#passport-atlas-photo"),
+  passportAtlasTitle: document.querySelector("#passport-atlas-title"),
+  passportPhotoCaption: document.querySelector("#passport-photo-caption"),
   countryName: document.querySelector("#country-name"),
   quizClue: document.querySelector("#quiz-clue"),
   scoreValue: document.querySelector("#score-value"),
@@ -1271,6 +1266,27 @@ function openCountry(country) {
 
 function renderPassport() {
   const countries = [...state.unlockedCountries];
+  const passportPhotos = {
+    Lebanon: {
+      src: "./assets/media/raouche-rocks.jpg",
+      alt: "Raouché Rocks along Lebanon's Mediterranean coast",
+      caption: "Raouché Rocks · Lebanon",
+    },
+    Mexico: {
+      src: "./assets/media/coyoacan.jpg",
+      alt: "A colorful street in Coyoacán, Mexico City",
+      caption: "Coyoacán · Mexico",
+    },
+    Japan: {
+      src: "./assets/media/naoshima.jpg",
+      alt: "Naoshima island landscape in Japan",
+      caption: "Naoshima · Japan",
+    },
+  };
+  const passportPhoto = passportPhotos[state.activeCountry] || passportPhotos.Lebanon;
+  ui.passportAtlasPhoto.src = passportPhoto.src;
+  ui.passportAtlasPhoto.alt = passportPhoto.alt;
+  ui.passportPhotoCaption.textContent = passportPhoto.caption;
   ui.passportCountryCount.textContent = String(countries.length);
   ui.passportActiveCountry.textContent = state.activeCountry;
   ui.passportDiscoveryCount.textContent = String(getCountryDiscoveryCount(state.activeCountry));

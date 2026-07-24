@@ -133,10 +133,13 @@ This repository contains the current prototype and the working content/docs foun
 - Every quiz question is validated so only one answer fully satisfies the clue.
 - The prototype uses real media in the main content pane instead of text-only placeholders.
 - Media sizing has been adjusted so book covers, artwork, flags, and video embeds show fully instead of being awkwardly cropped.
+- The passport hero now uses real destination photography instead of a decorative CSS globe, with photos changing for Lebanon, Mexico, and Japan.
+- The passport and country-shape clue were refreshed to favor authentic visual references over generated-looking geometry.
 - The passport behaves like a country map of unlocked places, not a duplicate log of the same country.
 - The bottom "more from Lebanon" experience was folded into the country discovery flow so the content stays in one place.
 - The local image folder is:
   - `world-discovery-game/assets/media/`
+- The Lebanon shape clue uses `lebanon-region-map.svg`, sourced from [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Lebanon_region_map.svg) rather than a generated silhouette.
 
 ## Current Content Snapshot
 
