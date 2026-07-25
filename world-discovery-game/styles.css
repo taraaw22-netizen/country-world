@@ -1,19 +1,19 @@
 :root {
-  --bg: #fff2cf;
-  --bg-2: #d7f6ff;
-  --ink: #16385a;
-  --muted: #56708d;
-  --panel: rgba(255, 251, 240, 0.92);
-  --line: rgba(22, 56, 90, 0.12);
-  --yellow: #ffd54a;
-  --orange: #ff975f;
-  --pink: #ff7ca4;
-  --blue: #6ab7ff;
-  --green: #78cf7d;
-  --purple: #756cff;
-  --shadow: 0 16px 0 rgba(22, 56, 90, 0.08), 0 30px 70px rgba(22, 56, 90, 0.16);
-  --font-display: "Avenir Next", "Trebuchet MS", sans-serif;
-  --font-body: "Trebuchet MS", "Avenir Next", sans-serif;
+  --bg: #f2eadb;
+  --bg-2: #dceef1;
+  --ink: #1f2933;
+  --muted: #68747c;
+  --panel: #fffaf0;
+  --line: rgba(31, 41, 51, 0.14);
+  --yellow: #f2bd43;
+  --orange: #e97445;
+  --pink: #d85a63;
+  --blue: #377f91;
+  --green: #59785e;
+  --purple: #5a536f;
+  --shadow: 0 12px 0 rgba(31, 41, 51, 0.08), 0 24px 50px rgba(31, 41, 51, 0.12);
+  --font-display: Georgia, "Times New Roman", serif;
+  --font-body: "Avenir Next", "Trebuchet MS", sans-serif;
 }
 
 * {
@@ -30,11 +30,9 @@ body {
   min-height: 100vh;
   color: var(--ink);
   font-family: var(--font-body);
-  background:
-    radial-gradient(circle at 14% 14%, rgba(255, 213, 74, 0.52), transparent 18%),
-    radial-gradient(circle at 82% 10%, rgba(255, 124, 164, 0.3), transparent 18%),
-    radial-gradient(circle at 80% 84%, rgba(106, 183, 255, 0.22), transparent 22%),
-    linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 68%);
+  background-color: var(--bg);
+  background-image: radial-gradient(rgba(31, 41, 51, 0.06) 0.7px, transparent 0.7px);
+  background-size: 7px 7px;
 }
 
 button,
@@ -72,6 +70,7 @@ h3 {
 }
 
 .quiz-view.hidden,
+.postcard-reveal.hidden,
 .discovery-view,
 .passport-screen.hidden {
   display: none;
@@ -79,6 +78,144 @@ h3 {
 
 .discovery-view.visible {
   display: block;
+}
+
+.postcard-reveal {
+  max-width: 620px;
+  min-height: calc(100vh - 44px);
+  margin: 0 auto;
+  padding: 20px 0 46px;
+}
+
+.postcard-topline,
+.postcard-stage,
+.postcard-actions {
+  display: flex;
+}
+
+.postcard-topline {
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.text-button,
+.quiet-button {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.postcard-stage {
+  flex-direction: column;
+  gap: 22px;
+}
+
+.postcard-art-wrap {
+  position: relative;
+  padding: 12px 12px 34px;
+  background: #fffdf7;
+  box-shadow: var(--shadow);
+  transform: rotate(-1.2deg);
+}
+
+.postcard-art {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  background: #e9dfcb;
+}
+
+.postcard-edge {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border: 1px solid rgba(31, 41, 51, 0.14);
+}
+
+.postcard-stamp {
+  position: absolute;
+  right: 26px;
+  bottom: 18px;
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border: 2px solid var(--pink);
+  border-radius: 50%;
+  color: var(--pink);
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 800;
+  transform: rotate(9deg);
+}
+
+.postcard-copy {
+  padding: 0 6px;
+}
+
+.postcard-copy h2 {
+  max-width: 10ch;
+  font-size: clamp(2.8rem, 11vw, 5.5rem);
+  line-height: 0.93;
+}
+
+.postcard-copy > p:not(.eyebrow):not(.postcard-invite) {
+  margin: 14px 0 0;
+  color: var(--orange);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.postcard-invite {
+  max-width: 34ch;
+  margin: 14px 0 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.postcard-actions {
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+
+.primary-button,
+.secondary-button {
+  min-height: 52px;
+  border: 0;
+  border-radius: 4px;
+  padding: 14px 18px;
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.primary-button {
+  background: var(--ink);
+  color: #fffaf0;
+  box-shadow: 0 5px 0 var(--orange);
+}
+
+.secondary-button {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+.secondary-button.saved {
+  background: #dce9d8;
+  border-color: #b8ceb5;
+}
+
+.quiet-button {
+  margin-top: 18px;
+  padding: 6px 0;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .quiz-card,
@@ -812,5 +949,184 @@ h1 {
 
   .passport-stats.large {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Comic postcard system: mobile is the primary composition. */
+.quiz-card,
+.content-card,
+.passport-card {
+  border-radius: 8px;
+  border-color: rgba(31, 41, 51, 0.12);
+  box-shadow: 5px 5px 0 rgba(31, 41, 51, 0.08);
+}
+
+.quiz-card {
+  padding: 18px;
+  background: var(--panel);
+}
+
+.quiz-stage {
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.quiz-copy {
+  padding: 0;
+}
+
+.quiz-copy h1 {
+  max-width: 11ch;
+  font-size: clamp(3rem, 15vw, 5.4rem);
+  line-height: 0.88;
+}
+
+.quiz-helper {
+  max-width: 30ch;
+}
+
+.quiz-clue {
+  min-height: 320px;
+  border-radius: 6px;
+  border-width: 2px;
+  box-shadow: 4px 4px 0 rgba(31, 41, 51, 0.08);
+}
+
+.answer-grid {
+  gap: 10px;
+}
+
+.answer-button {
+  min-height: 64px;
+  border-radius: 4px;
+  box-shadow: 4px 4px 0 rgba(31, 41, 51, 0.1);
+  font-size: 1.05rem;
+}
+
+.country-header {
+  margin-bottom: 14px;
+}
+
+.country-header h2 {
+  font-size: clamp(3.2rem, 15vw, 5.5rem);
+}
+
+.header-actions {
+  width: 100%;
+}
+
+.header-actions .next-button {
+  flex: 1;
+}
+
+.next-button,
+.discovery-chip,
+.alternate-chip,
+.inline-link {
+  border-radius: 4px;
+}
+
+.discovery-nav {
+  margin: 0 -14px 16px;
+  padding: 4px 14px 10px;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  scrollbar-width: none;
+}
+
+.discovery-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.discovery-chip {
+  flex: 0 0 auto;
+  padding: 11px 15px;
+  box-shadow: 3px 3px 0 rgba(31, 41, 51, 0.1);
+}
+
+.discovery-chip.active {
+  background: var(--orange);
+}
+
+.content-pane {
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.media-frame {
+  min-height: 0;
+  border-radius: 6px;
+  border-width: 2px;
+  box-shadow: 5px 5px 0 rgba(31, 41, 51, 0.1);
+}
+
+.media-card img,
+.media-card iframe {
+  height: 300px;
+}
+
+.media-meta {
+  padding: 16px;
+}
+
+.content-card {
+  padding: 18px;
+}
+
+.content-card h3 {
+  font-size: 2.4rem;
+}
+
+.passport-screen {
+  background: rgba(31, 41, 51, 0.35);
+}
+
+.passport-shell {
+  border-radius: 8px;
+  border-color: rgba(31, 41, 51, 0.12);
+  box-shadow: 7px 7px 0 rgba(31, 41, 51, 0.14);
+}
+
+@media (min-width: 760px) {
+  .app-shell {
+    max-width: 1100px;
+    padding: 28px;
+  }
+
+  .quiz-card {
+    padding: 34px;
+  }
+
+  .quiz-stage {
+    grid-template-columns: minmax(220px, 0.65fr) minmax(0, 1.35fr);
+  }
+
+  .postcard-reveal {
+    max-width: 1040px;
+    padding-top: 32px;
+  }
+
+  .postcard-stage {
+    display: grid;
+    grid-template-columns: minmax(320px, 0.9fr) minmax(300px, 0.7fr);
+    gap: 52px;
+    align-items: center;
+  }
+
+  .postcard-copy {
+    padding: 0;
+  }
+
+  .postcard-copy h2 {
+    font-size: clamp(3.5rem, 6vw, 6rem);
+  }
+
+  .media-frame {
+    min-height: 540px;
+  }
+
+  .media-card img,
+  .media-card iframe {
+    height: 390px;
   }
 }

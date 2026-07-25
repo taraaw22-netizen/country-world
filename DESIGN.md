@@ -7,28 +7,28 @@
 - Primary job: answer a light quiz, then follow a compelling cultural trail
 - Product promise: make a country feel approachable, specific, and alive
 - Existing facts: the prototype is a no-build vanilla web app with local media
-- Assumptions: the passport should feel like a keepsake, not a literal atlas
+- Assumptions: the passport should feel like a keepsake, not a literal atlas; the postcard reveal is the main mobile payoff
 
 ## Direction
 
-- Emotional signal: playful field notebook with real places and recommendations
-- Visual thesis: bright paper, bold type, and photographic evidence turn curiosity into a souvenir
-- Signature detail: real destination photography framed like a passport keepsake
-- Anti-goals: fake geography, generated-looking silhouettes, and decorative UI that competes with discovery
+- Emotional signal: curious, witty, hand-printed, and collectible
+- Visual thesis: a French-comic travel postcard turns a correct answer into an object worth keeping
+- Signature detail: portrait postcard reveal with ink contours, flat color, and a country stamp
+- Anti-goals: generic cartoon clip art, dashboard-like card grids, and making the deeper content mandatory
 
 ## System
 
 ### Typography
 
-- Display: existing display face
-- Heading: existing display face
+- Display: serif editorial face with comic-poster scale
+- Heading: serif editorial face with compact, expressive line breaks
 - Body: existing body face
 - Label / metadata: existing uppercase eyebrow treatment
 - Numeric / code: existing bold numeric treatment
 
 ### Color roles
 
-- Canvas: warm cream
+- Canvas: warm paper with subtle print grain
 - Surface: white
 - Elevated surface: white with soft blue shadow
 - Text: deep navy
@@ -46,7 +46,7 @@
 
 ### Imagery and icons
 
-- Source and crop logic: use authentic local photography with `object-fit: cover` only for contextual destination photography; use `contain` for maps, flags, books, and artwork
+- Source and crop logic: use generated postcard illustration for the emotional reveal; use authentic local photography with `object-fit: contain` for factual media; use `contain` for maps, flags, books, and artwork
 - Icon family: text and native controls for now
 - Prohibited substitutions: hand-drawn country silhouettes when a sourced map is available
 
@@ -58,7 +58,7 @@
 
 ## Responsive and platform behavior
 
-- Narrow: stack the passport photo and stats; preserve the photo focal point
+- Narrow: postcard reveal first, swipeable discovery deck second; preserve the portrait focal point and keep actions reachable
 - Medium: use the existing one-column breakpoint
 - Wide: photo-led passport hero with stats alongside
 - Input modes: keyboard and touch
@@ -77,5 +77,5 @@
 
 - Target routes or screens: quiz, discovery, passport
 - Viewports or devices: wide desktop and narrow mobile
-- Primary flow: unlock country -> open passport -> revisit country
+- Primary flow: guess -> postcard reveal -> optional discoveries -> collect -> revisit country
 - Accessibility checks: button labels, image alt text, focus order, reduced-motion-safe layout

@@ -1087,6 +1087,27 @@ const COUNTRY_LIBRARY = {
 
 const storageKey = "country-world-media-passport";
 
+const POSTCARD_DATA = {
+  Lebanon: {
+    image: "./assets/media/lebanon-postcard-concept-v1.png",
+    alt: "Comic-style illustrated postcard of Beirut's coast and Raouché Rocks",
+    stamp: "LB",
+    caption: "Raouché Rocks · Beirut",
+  },
+  Mexico: {
+    image: "./assets/media/coyoacan.jpg",
+    alt: "Colorful street in Coyoacán, Mexico City",
+    stamp: "MX",
+    caption: "Coyoacán · Mexico City",
+  },
+  Japan: {
+    image: "./assets/media/naoshima.jpg",
+    alt: "Naoshima island landscape in Japan",
+    stamp: "JP",
+    caption: "Naoshima · Japan",
+  },
+};
+
 const state = {
   question: null,
   questionQueue: [],
@@ -1131,6 +1152,15 @@ const ui = {
   quizClue: document.querySelector("#quiz-clue"),
   scoreValue: document.querySelector("#score-value"),
   quizView: document.querySelector("#quiz-view"),
+  postcardReveal: document.querySelector("#postcard-reveal"),
+  postcardArt: document.querySelector("#postcard-art"),
+  postcardStamp: document.querySelector("#postcard-stamp"),
+  postcardCountry: document.querySelector("#postcard-country"),
+  postcardCaption: document.querySelector("#postcard-caption"),
+  exploreButton: document.querySelector("#explore-button"),
+  savePostcardButton: document.querySelector("#save-postcard-button"),
+  newCountryButton: document.querySelector("#new-country-button"),
+  revealPassportButton: document.querySelector("#reveal-passport-button"),
   resultLine: document.querySelector("#result-line"),
   chips: [...document.querySelectorAll(".discovery-chip")],
 };
@@ -1143,6 +1173,13 @@ function boot() {
   renderPassport();
 
   ui.nextButton.addEventListener("click", resetRound);
+  ui.exploreButton.addEventListener("click", () => openCountry(state.activeCountry));
+  ui.savePostcardButton.addEventListener("click", () => {
+    ui.savePostcardButton.textContent = "Saved to passport";
+    ui.savePostcardButton.classList.add("saved");
+  });
+  ui.newCountryButton.addEventListener("click", resetRound);
+  ui.revealPassportButton.addEventListener("click", openPassport);
   ui.passportButton.addEventListener("click", openPassport);
   ui.closePassportButton.addEventListener("click", closePassport);
   ui.chips.forEach((chip) =>
@@ -1231,7 +1268,7 @@ function answer(option) {
   persist();
 
   setTimeout(() => {
-    openCountry(answerCountry);
+    openPostcard(answerCountry);
   }, 700);
 }
 
@@ -1257,10 +1294,28 @@ function openCountry(country) {
   state.activeCountry = country;
   closePassport();
   ui.quizView.classList.add("hidden");
+  ui.postcardReveal.classList.add("hidden");
   ui.discoveryView.classList.add("visible");
   if (ui.countryName) ui.countryName.textContent = country;
   resetCategoryIndexes();
   selectDiscovery("taste");
+  renderPassport();
+}
+
+function openPostcard(country) {
+  state.activeCountry = country;
+  closePassport();
+  const postcard = POSTCARD_DATA[country] || POSTCARD_DATA.Lebanon;
+  ui.postcardArt.src = postcard.image;
+  ui.postcardArt.alt = postcard.alt;
+  ui.postcardStamp.textContent = postcard.stamp;
+  ui.postcardCountry.textContent = country;
+  ui.postcardCaption.textContent = postcard.caption;
+  ui.savePostcardButton.textContent = "Keep postcard";
+  ui.savePostcardButton.classList.remove("saved");
+  ui.quizView.classList.add("hidden");
+  ui.discoveryView.classList.remove("visible");
+  ui.postcardReveal.classList.remove("hidden");
   renderPassport();
 }
 
@@ -1351,6 +1406,7 @@ function resetRound() {
   state.roundScore = null;
   closePassport();
   ui.discoveryView.classList.remove("visible");
+  ui.postcardReveal.classList.add("hidden");
   ui.quizView.classList.remove("hidden");
   ui.resultLine.textContent = "";
   pickQuestion();
