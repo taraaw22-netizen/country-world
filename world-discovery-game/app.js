@@ -1106,14 +1106,14 @@ const POSTCARD_DATA = {
     caption: "Raouché Rocks · Beirut",
   },
   Mexico: {
-    image: "./assets/media/coyoacan.jpg",
-    alt: "Colorful street in Coyoacán, Mexico City",
+    image: "./assets/media/mexico-postcard-v1.png",
+    alt: "Comic postcard illustration of a colorful Coyoacán street with tacos and papel picado",
     stamp: "MX",
     caption: "Coyoacán · Mexico City",
   },
   Japan: {
-    image: "./assets/media/naoshima.jpg",
-    alt: "Naoshima island landscape in Japan",
+    image: "./assets/media/japan-postcard-v1.png",
+    alt: "Comic postcard illustration of a Japanese island harbor with a red ferry and art sculpture",
     stamp: "JP",
     caption: "Naoshima · Japan",
   },
@@ -1384,13 +1384,13 @@ function renderPassport() {
       caption: "Raouché Rocks · Lebanon",
     },
     Mexico: {
-      src: "./assets/media/coyoacan.jpg",
-      alt: "A colorful street in Coyoacán, Mexico City",
+      src: "./assets/media/mexico-postcard-v1.png",
+      alt: "Comic postcard illustration of a colorful Coyoacán street with tacos and papel picado",
       caption: "Coyoacán · Mexico",
     },
     Japan: {
-      src: "./assets/media/naoshima.jpg",
-      alt: "Naoshima island landscape in Japan",
+      src: "./assets/media/japan-postcard-v1.png",
+      alt: "Comic postcard illustration of a Japanese island harbor with a red ferry and art sculpture",
       caption: "Naoshima · Japan",
     },
   };

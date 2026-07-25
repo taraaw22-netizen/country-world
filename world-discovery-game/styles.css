@@ -1027,15 +1027,22 @@ h1 {
 }
 
 .country-header h2 {
-  font-size: clamp(3.2rem, 15vw, 5.5rem);
+  max-width: 9ch;
+  font-size: clamp(2.5rem, 8vw, 4.3rem);
 }
 
 .header-actions {
-  width: 100%;
+  width: auto;
+  max-width: 100%;
 }
 
 .header-actions .next-button {
   flex: 1;
+}
+
+.country-header,
+.country-header > div {
+  min-width: 0;
 }
 
 .next-button,
@@ -1150,6 +1157,12 @@ h1 {
   }
 }
 
+@media (max-width: 759px) {
+  .header-actions {
+    width: 100%;
+  }
+}
+
 /* One postcard object: mystery front, collectible back. */
 .quiz-view {
   max-width: 720px;
@@ -1244,7 +1257,7 @@ h1 {
 
 .quiz-question h1 {
   max-width: none;
-  font-size: clamp(2rem, 8vw, 3.25rem);
+  font-size: clamp(1.7rem, 5vw, 2.65rem);
   line-height: 0.96;
 }
 
@@ -1313,10 +1326,12 @@ h1 {
 }
 
 .hint-flag {
-  width: 100px;
-  max-height: 58px;
-  object-fit: contain;
-  background: #fff;
+  display: block;
+  width: 128px;
+  height: auto;
+  max-height: none;
+  object-fit: initial;
+  background: transparent;
   border: 1px solid var(--line);
 }
 
@@ -1368,6 +1383,6 @@ h1 {
   }
 
   .postcard-front .quiz-question h1 {
-    font-size: 3.8rem;
+    font-size: 2.9rem;
   }
 }

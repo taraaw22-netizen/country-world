@@ -138,6 +138,7 @@ This repository contains the current prototype and the working content/docs foun
 - The first mobile-first Comic Postcard Atlas reveal is live for Lebanon; discovery content remains available as an optional deeper layer after the reveal.
 - The quiz now uses one two-sided postcard object: a generated mystery scene on the front flips into the collectible country postcard after a correct answer.
 - Flag and capital hints now stay on the mystery postcard instead of starting a separate question; the unlocked side provides the explicit `Next country` action.
+- Comic reward postcards now exist for Lebanon, Mexico, and Japan; the passport no longer falls back to live photography for those countries.
 - The image direction and generation rules live in `IMAGE-BIBLE.md`.
 - The passport behaves like a country map of unlocked places, not a duplicate log of the same country.
 - The bottom "more from Lebanon" experience was folded into the country discovery flow so the content stays in one place.
