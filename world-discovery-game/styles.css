@@ -1149,3 +1149,147 @@ h1 {
     height: 390px;
   }
 }
+
+/* One postcard object: mystery front, collectible back. */
+.quiz-view {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 18px 0 46px;
+}
+
+.quiz-header,
+.quiz-card-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.quiz-header {
+  padding: 0 4px 14px;
+}
+
+.quiz-header .eyebrow,
+.quiz-card-label .eyebrow {
+  margin-bottom: 0;
+}
+
+.round-mark {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+}
+
+.postcard-flip {
+  display: grid;
+  perspective: 1600px;
+}
+
+.postcard-face {
+  grid-area: 1 / 1;
+  min-width: 0;
+  overflow: hidden;
+  backface-visibility: hidden;
+  background: var(--panel);
+  border: 1px solid rgba(31, 41, 51, 0.15);
+  box-shadow: 8px 8px 0 rgba(31, 41, 51, 0.1);
+  transition: transform 700ms cubic-bezier(0.2, 0.75, 0.2, 1), opacity 200ms ease;
+}
+
+.postcard-front {
+  position: relative;
+  z-index: 2;
+  padding: 12px;
+  transform: rotateY(0deg);
+}
+
+.postcard-back {
+  z-index: 1;
+  padding: 14px;
+  transform: rotateY(180deg);
+}
+
+.postcard-flip.flipped .postcard-front {
+  transform: rotateY(-180deg);
+}
+
+.postcard-flip.flipped .postcard-back {
+  transform: rotateY(0deg);
+}
+
+.postcard-front .quiz-clue {
+  min-height: 0;
+  margin-top: 12px;
+  aspect-ratio: 4 / 5;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.postcard-front .clue-postcard-image {
+  min-height: 0;
+  object-fit: cover;
+}
+
+.quiz-question {
+  padding: 18px 6px 12px;
+  text-align: center;
+}
+
+.quiz-question .eyebrow {
+  margin-bottom: 8px;
+}
+
+.quiz-question h1 {
+  max-width: none;
+  font-size: clamp(2rem, 8vw, 3.25rem);
+  line-height: 0.96;
+}
+
+.quiz-question .quiz-helper {
+  max-width: none;
+  margin: 10px 0 0;
+  font-size: 0.95rem;
+}
+
+.postcard-front .answer-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding: 0 2px 2px;
+}
+
+.postcard-front .result-line {
+  text-align: center;
+  padding: 8px 0 2px;
+}
+
+.postcard-back .postcard-topline {
+  padding: 0 2px 12px;
+}
+
+.postcard-back .postcard-stage {
+  gap: 18px;
+}
+
+.postcard-back .postcard-art-wrap {
+  transform: rotate(-0.6deg);
+}
+
+@media (min-width: 760px) {
+  .quiz-view {
+    max-width: 760px;
+    padding-top: 32px;
+  }
+
+  .postcard-front {
+    padding: 18px;
+  }
+
+  .postcard-back {
+    padding: 22px;
+  }
+
+  .postcard-front .quiz-question h1 {
+    font-size: 3.8rem;
+  }
+}

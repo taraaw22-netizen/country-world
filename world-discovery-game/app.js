@@ -1164,7 +1164,9 @@ const ui = {
   quizClue: document.querySelector("#quiz-clue"),
   scoreValue: document.querySelector("#score-value"),
   quizView: document.querySelector("#quiz-view"),
-  postcardReveal: document.querySelector("#postcard-reveal"),
+  quizFlip: document.querySelector("#postcard-flip"),
+  quizType: document.querySelector("#quiz-type"),
+  quizHeading: document.querySelector("#quiz-heading"),
   postcardArt: document.querySelector("#postcard-art"),
   postcardStamp: document.querySelector("#postcard-stamp"),
   postcardCountry: document.querySelector("#postcard-country"),
@@ -1230,13 +1232,9 @@ function isValidQuestion(question) {
 
 function renderQuestion() {
   ui.scoreValue.textContent = state.roundScore === null ? "-" : String(state.roundScore);
-  ui.quizClue.innerHTML = `
-    <div style="padding:12px 16px 0;">
-      <p class="eyebrow" style="margin-bottom:8px;">${state.question.type}</p>
-      <p style="margin:0 0 14px;font-weight:800;font-size:1.05rem;color:var(--muted);">${state.question.prompt}</p>
-    </div>
-    ${state.question.render()}
-  `;
+  ui.quizType.textContent = state.question.type === "postcard" ? "Postcard clue" : state.question.type;
+  ui.quizHeading.textContent = state.question.prompt;
+  ui.quizClue.innerHTML = state.question.render();
 
   ui.answerGrid.innerHTML = "";
   shuffle(state.question.options).forEach((option) => {
@@ -1312,7 +1310,7 @@ function openCountry(country) {
   state.activeCountry = country;
   closePassport();
   ui.quizView.classList.add("hidden");
-  ui.postcardReveal.classList.add("hidden");
+  ui.quizFlip.classList.remove("flipped");
   ui.discoveryView.classList.add("visible");
   if (ui.countryName) ui.countryName.textContent = country;
   resetCategoryIndexes();
@@ -1331,9 +1329,9 @@ function openPostcard(country) {
   ui.postcardCaption.textContent = postcard.caption;
   ui.savePostcardButton.textContent = "Keep postcard";
   ui.savePostcardButton.classList.remove("saved");
-  ui.quizView.classList.add("hidden");
+  ui.quizView.classList.remove("hidden");
   ui.discoveryView.classList.remove("visible");
-  ui.postcardReveal.classList.remove("hidden");
+  ui.quizFlip.classList.add("flipped");
   renderPassport();
 }
 
@@ -1424,7 +1422,7 @@ function resetRound() {
   state.roundScore = null;
   closePassport();
   ui.discoveryView.classList.remove("visible");
-  ui.postcardReveal.classList.add("hidden");
+  ui.quizFlip.classList.remove("flipped");
   ui.quizView.classList.remove("hidden");
   ui.resultLine.textContent = "";
   pickQuestion();

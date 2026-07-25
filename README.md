@@ -136,6 +136,7 @@ This repository contains the current prototype and the working content/docs foun
 - The passport hero now uses real destination photography instead of a decorative CSS globe, with photos changing for Lebanon, Mexico, and Japan.
 - The passport and country-shape clue were refreshed to favor authentic visual references over generated-looking geometry.
 - The first mobile-first Comic Postcard Atlas reveal is live for Lebanon; discovery content remains available as an optional deeper layer after the reveal.
+- The quiz now uses one two-sided postcard object: a generated mystery scene on the front flips into the collectible country postcard after a correct answer.
 - The image direction and generation rules live in `IMAGE-BIBLE.md`.
 - The passport behaves like a country map of unlocked places, not a duplicate log of the same country.
 - The bottom "more from Lebanon" experience was folded into the country discovery flow so the content stays in one place.

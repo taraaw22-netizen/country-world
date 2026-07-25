@@ -13,7 +13,7 @@
 
 - Emotional signal: curious, witty, hand-printed, and collectible
 - Visual thesis: a French-comic travel postcard turns a correct answer into an object worth keeping
-- Signature detail: portrait postcard reveal with ink contours, flat color, and a country stamp
+- Signature detail: one portrait postcard object that flips from an illustrated mystery scene into a stamped collectible reward
 - Anti-goals: generic cartoon clip art, dashboard-like card grids, and making the deeper content mandatory
 
 ## System
@@ -77,5 +77,5 @@
 
 - Target routes or screens: quiz, discovery, passport
 - Viewports or devices: wide desktop and narrow mobile
-- Primary flow: guess -> postcard reveal -> optional discoveries -> collect -> revisit country
+- Primary flow: mystery scene -> guess -> postcard flip -> optional discoveries -> collect -> revisit country
 - Accessibility checks: button labels, image alt text, focus order, reduced-motion-safe layout

@@ -9,49 +9,52 @@
   <body>
     <main class="app-shell">
       <section class="quiz-view" id="quiz-view">
-        <div class="quiz-card">
-          <div class="quiz-stage">
-            <div class="quiz-copy">
-              <p class="eyebrow">Country World</p>
-              <div class="quiz-status">
-                <span class="score-chip">Score <strong id="score-value">-</strong></span>
+        <div class="quiz-header">
+          <p class="eyebrow">Country World</p>
+          <span class="round-mark">POSTCARD 01</span>
+        </div>
+
+        <div class="postcard-flip" id="postcard-flip">
+          <div class="postcard-face postcard-front">
+            <div class="quiz-card-label">
+              <span class="eyebrow">Mystery postcard</span>
+              <span class="score-chip">Score <strong id="score-value">-</strong></span>
+            </div>
+
+            <div class="quiz-clue" id="quiz-clue"></div>
+            <div class="quiz-question">
+              <p class="eyebrow" id="quiz-type">Postcard clue</p>
+              <h1 id="quiz-heading">Where did this postcard come from?</h1>
+              <p class="quiz-helper">Look closely, then make your guess.</p>
+            </div>
+            <div class="answer-grid" id="answer-grid"></div>
+            <p class="result-line" id="result-line"></p>
+          </div>
+
+          <div class="postcard-face postcard-back" aria-live="polite">
+            <div class="postcard-topline">
+              <p class="eyebrow">Postcard unlocked</p>
+              <button class="text-button" id="reveal-passport-button" type="button">Open passport</button>
+            </div>
+
+            <div class="postcard-stage">
+              <div class="postcard-art-wrap">
+                <img class="postcard-art" id="postcard-art" src="./assets/media/lebanon-postcard-concept-v1.png" alt="Illustrated postcard of Lebanon" />
+                <div class="postcard-edge"></div>
+                <div class="postcard-stamp" id="postcard-stamp">LB</div>
               </div>
-              <h1>Read the postcard.</h1>
-              <p class="quiz-helper">A small scene can hold a whole country. Look closely, then make your guess.</p>
+              <div class="postcard-copy">
+                <p class="eyebrow" id="postcard-country">Lebanon</p>
+                <h2 id="postcard-title">A postcard from somewhere worth lingering.</h2>
+                <p id="postcard-caption">Raouché Rocks · Beirut</p>
+                <p class="postcard-invite">You found the country. Keep the postcard, or open the discoveries when you want to go deeper.</p>
+                <div class="postcard-actions">
+                  <button class="primary-button" id="explore-button" type="button">Open discoveries</button>
+                  <button class="secondary-button" id="save-postcard-button" type="button">Keep postcard</button>
+                </div>
+                <button class="quiet-button" id="new-country-button" type="button">Try another clue</button>
+              </div>
             </div>
-
-            <div class="quiz-panel">
-              <div class="quiz-clue" id="quiz-clue"></div>
-
-              <div class="answer-grid" id="answer-grid"></div>
-              <p class="result-line" id="result-line"></p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="postcard-reveal hidden" id="postcard-reveal" aria-live="polite">
-        <div class="postcard-topline">
-          <p class="eyebrow">Postcard unlocked</p>
-          <button class="text-button" id="reveal-passport-button" type="button">Open passport</button>
-        </div>
-
-        <div class="postcard-stage">
-          <div class="postcard-art-wrap">
-            <img class="postcard-art" id="postcard-art" src="./assets/media/lebanon-postcard-concept-v1.png" alt="Illustrated postcard of Lebanon" />
-            <div class="postcard-edge"></div>
-            <div class="postcard-stamp" id="postcard-stamp">LB</div>
-          </div>
-          <div class="postcard-copy">
-            <p class="eyebrow" id="postcard-country">Lebanon</p>
-            <h2 id="postcard-title">A postcard from somewhere worth lingering.</h2>
-            <p id="postcard-caption">Raouché Rocks · Beirut</p>
-            <p class="postcard-invite">You found the country. Keep the postcard, or open the discoveries when you want to go deeper.</p>
-            <div class="postcard-actions">
-              <button class="primary-button" id="explore-button" type="button">Open discoveries</button>
-              <button class="secondary-button" id="save-postcard-button" type="button">Keep postcard</button>
-            </div>
-            <button class="quiet-button" id="new-country-button" type="button">Try another clue</button>
           </div>
         </div>
       </section>
