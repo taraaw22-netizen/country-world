@@ -59,6 +59,17 @@ const COUNTRY_DATA = {
 
 const QUESTION_BANK = [
   {
+    type: "postcard",
+    prompt: "Which country does this postcard belong to?",
+    options: ["Lebanon", "Jordan", "Mexico", "Greece"],
+    answerCountry: "Lebanon",
+    render: () => `
+      <div class="clue-card-region clue-postcard">
+        <img class="clue-postcard-image" src="./assets/media/lebanon-postcard-clue-v1.png" alt="Comic postcard scene with a Mediterranean city, cedar tree, man'oushe, and tea" />
+      </div>`,
+    test: (country) => country === "Lebanon",
+  },
+  {
     type: "flag",
     prompt: "Which country's flag is this?",
     options: ["Lebanon", "Jordan", "Syria", "Greece"],
@@ -1117,6 +1128,7 @@ const state = {
   unlockedCountries: new Set(loadState().unlockedCountries),
   activeKey: "taste",
   activeCountry: "Lebanon",
+  openingQuestion: true,
   activeIndexByCategory: {
     taste: 0,
     listen: 0,
@@ -1198,6 +1210,12 @@ function boot() {
 }
 
 function pickQuestion() {
+  if (state.openingQuestion) {
+    state.question = QUESTION_BANK[0];
+    state.openingQuestion = false;
+    return;
+  }
+
   if (!state.questionQueue.length) {
     state.questionQueue = shuffle(QUESTION_BANK.filter(isValidQuestion));
   }
@@ -1323,8 +1341,8 @@ function renderPassport() {
   const countries = [...state.unlockedCountries];
   const passportPhotos = {
     Lebanon: {
-      src: "./assets/media/raouche-rocks.jpg",
-      alt: "Raouché Rocks along Lebanon's Mediterranean coast",
+      src: "./assets/media/lebanon-postcard-concept-v1.png",
+      alt: "Comic postcard illustration of Lebanon's Mediterranean coast",
       caption: "Raouché Rocks · Lebanon",
     },
     Mexico: {
