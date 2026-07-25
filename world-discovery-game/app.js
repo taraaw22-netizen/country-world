@@ -1179,6 +1179,7 @@ const ui = {
   passportDiscoveryCount: document.querySelector("#passport-discovery-count"),
   passportNote: document.querySelector("#passport-note"),
   passportLibraryList: document.querySelector("#passport-library-list"),
+  passportZoom: document.querySelector("#passport-zoom"),
   passportAtlasPhoto: document.querySelector("#passport-atlas-photo"),
   passportAtlasTitle: document.querySelector("#passport-atlas-title"),
   passportPhotoCaption: document.querySelector("#passport-photo-caption"),
@@ -1235,6 +1236,9 @@ function boot() {
     const button = event.target.closest("[data-country]");
     if (!button) return;
     openCountry(button.dataset.country);
+  });
+  ui.passportZoom.addEventListener("input", (event) => {
+    ui.passportMap.style.setProperty("--globe-scale", event.target.value);
   });
 }
 
