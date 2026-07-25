@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Country World · Lebanon Media Prototype</title>
+    <title>Country World · Postcard Atlas</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -112,60 +112,40 @@
           <header class="passport-header">
             <div>
               <p class="eyebrow">Passport</p>
-              <h2>Your World</h2>
-              <p class="passport-subtitle">Unlocked countries live here. Open one to jump back into its discoveries.</p>
+              <h2>Your postcard world</h2>
+              <p class="passport-subtitle">Every country you guess becomes a postcard in your collection.</p>
             </div>
             <button class="next-button" id="close-passport-button" type="button">
               Back to country
             </button>
           </header>
 
-          <section class="passport-hero">
-            <div class="passport-atlas">
-              <img
-                class="passport-atlas-photo"
-                id="passport-atlas-photo"
-                src="./assets/media/raouche-rocks.jpg"
-                alt="Raouché Rocks along Lebanon's Mediterranean coast"
-              />
-              <div class="passport-atlas-wash"></div>
-              <div class="passport-atlas-label">
-                <span>Field note</span>
-                <strong id="passport-atlas-title">A place to return to.</strong>
-              </div>
-              <div class="passport-photo-caption" id="passport-photo-caption">Raouché Rocks · Lebanon</div>
+          <section class="passport-collection">
+            <div class="passport-stats large">
+              <div class="stat-chip"><span>Postcards</span><strong id="passport-country-count">0</strong></div>
+              <div class="stat-chip"><span>Current</span><strong id="passport-active-country">-</strong></div>
+              <div class="stat-chip"><span>World seen</span><strong id="passport-discovery-count">0</strong></div>
             </div>
 
-            <div class="passport-summary">
-              <div class="passport-stats large">
-                <div class="stat-chip">
-                  <span>Unlocked</span>
-                  <strong id="passport-country-count">0</strong>
-                </div>
-                <div class="stat-chip">
-                  <span>Current</span>
-                  <strong id="passport-active-country">-</strong>
-                </div>
-                <div class="stat-chip">
-                  <span>Discoveries</span>
-                  <strong id="passport-discovery-count">0</strong>
-                </div>
+            <div class="passport-world-panel">
+              <div class="passport-section-heading">
+                <div><p class="eyebrow">The world so far</p><h3>Pin your places.</h3></div>
+                <span class="passport-zoom-note">Drag / zoom coming next</span>
               </div>
-              <p class="passport-note" id="passport-note">Your passport will fill out as more countries are unlocked.</p>
-            </div>
-          </section>
-
-          <section class="passport-library">
-            <div class="passport-panel">
-              <p class="eyebrow">Unlocked Countries</p>
-              <div class="passport-map" id="passport-map">
+              <div class="passport-globe" id="passport-map" aria-label="Illustrated world map of guessed countries">
+                <div class="globe-grid"></div>
+                <div class="globe-land land-one"></div><div class="globe-land land-two"></div><div class="globe-land land-three"></div>
+                <div class="globe-pin pin-lebanon" data-country="Lebanon"><span>LB</span></div>
+                <div class="globe-pin pin-mexico" data-country="Mexico"><span>MX</span></div>
+                <div class="globe-pin pin-japan" data-country="Japan"><span>JP</span></div>
                 <p class="passport-empty">Unlock a country to add it to your passport.</p>
               </div>
+              <p class="passport-note" id="passport-note">Your postcard world will fill out as you play.</p>
             </div>
 
-            <div class="passport-panel">
-              <p class="eyebrow">Country Library</p>
-              <div class="passport-library-list" id="passport-library-list"></div>
+            <div class="passport-postcards-panel">
+              <div class="passport-section-heading"><div><p class="eyebrow">Postcard collection</p><h3>Places worth keeping.</h3></div></div>
+              <div class="passport-postcards" id="passport-library-list"></div>
             </div>
           </section>
         </div>

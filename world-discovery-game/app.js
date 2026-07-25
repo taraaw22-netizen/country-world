@@ -70,6 +70,28 @@ const QUESTION_BANK = [
     test: (country) => country === "Lebanon",
   },
   {
+    type: "postcard",
+    prompt: "Which country does this postcard belong to?",
+    options: ["Mexico", "Guatemala", "Spain", "Colombia"],
+    answerCountry: "Mexico",
+    render: () => `
+      <div class="clue-card-region clue-postcard">
+        <img class="clue-postcard-image" src="./assets/media/mexico-postcard-clue-v1.png" alt="Comic postcard scene with colorful Mexican homes, papel picado, tacos, and a volcano" />
+      </div>`,
+    test: (country) => country === "Mexico",
+  },
+  {
+    type: "postcard",
+    prompt: "Which country does this postcard belong to?",
+    options: ["Japan", "South Korea", "China", "Taiwan"],
+    answerCountry: "Japan",
+    render: () => `
+      <div class="clue-card-region clue-postcard">
+        <img class="clue-postcard-image" src="./assets/media/japan-postcard-clue-v1.png" alt="Comic postcard scene with a Japanese harbor, red ferry, pine tree, and art sculpture" />
+      </div>`,
+    test: (country) => country === "Japan",
+  },
+  {
     type: "flag",
     prompt: "Which country's flag is this?",
     options: ["Lebanon", "Jordan", "Syria", "Greece"],
@@ -1121,7 +1143,7 @@ const POSTCARD_DATA = {
 
 const state = {
   question: null,
-  questionQueue: [],
+  countryQueue: [],
   answered: false,
   missedQuestion: false,
   roundScore: null,
@@ -1218,16 +1240,17 @@ function boot() {
 
 function pickQuestion() {
   if (state.openingQuestion) {
-    state.question = QUESTION_BANK[0];
+    state.question = QUESTION_BANK.find((question) => question.type === "postcard" && question.answerCountry === "Lebanon");
     state.openingQuestion = false;
     return;
   }
 
-  if (!state.questionQueue.length) {
-    state.questionQueue = shuffle(QUESTION_BANK.filter(isValidQuestion));
+  const postcardQuestions = QUESTION_BANK.filter((question) => question.type === "postcard");
+  if (!state.countryQueue.length) {
+    state.countryQueue = shuffle(postcardQuestions.filter((question) => question.answerCountry !== state.activeCountry));
   }
 
-  state.question = state.questionQueue.shift();
+  state.question = state.countryQueue.shift() || postcardQuestions.find((question) => question.answerCountry !== state.activeCountry);
 }
 
 function isValidQuestion(question) {
@@ -1376,51 +1399,32 @@ function openPostcard(country) {
 }
 
 function renderPassport() {
-  const countries = [...state.unlockedCountries];
-  const passportPhotos = {
-    Lebanon: {
-      src: "./assets/media/lebanon-postcard-concept-v1.png",
-      alt: "Comic postcard illustration of Lebanon's Mediterranean coast",
-      caption: "Raouché Rocks · Lebanon",
-    },
-    Mexico: {
-      src: "./assets/media/mexico-postcard-v1.png",
-      alt: "Comic postcard illustration of a colorful Coyoacán street with tacos and papel picado",
-      caption: "Coyoacán · Mexico",
-    },
-    Japan: {
-      src: "./assets/media/japan-postcard-v1.png",
-      alt: "Comic postcard illustration of a Japanese island harbor with a red ferry and art sculpture",
-      caption: "Naoshima · Japan",
-    },
-  };
-  const passportPhoto = passportPhotos[state.activeCountry] || passportPhotos.Lebanon;
-  ui.passportAtlasPhoto.src = passportPhoto.src;
-  ui.passportAtlasPhoto.alt = passportPhoto.alt;
-  ui.passportPhotoCaption.textContent = passportPhoto.caption;
+  const countries = [...state.unlockedCountries].filter((country) => POSTCARD_DATA[country]);
   ui.passportCountryCount.textContent = String(countries.length);
   ui.passportActiveCountry.textContent = state.activeCountry;
-  ui.passportDiscoveryCount.textContent = String(getCountryDiscoveryCount(state.activeCountry));
+  ui.passportDiscoveryCount.textContent = String(countries.length);
   ui.passportNote.textContent = countries.length
-    ? `${state.activeCountry} currently has ${getCountryDiscoveryCount(state.activeCountry)} curated discovery options in the app.`
-    : "Your passport will fill out as more countries are unlocked.";
+    ? `${countries.length} postcard${countries.length === 1 ? "" : "s"} collected. Tap one to revisit its discoveries.`
+    : "Your postcard world will fill out as you play.";
 
-  if (!countries.length) {
-    ui.passportMap.innerHTML = '<p class="passport-empty">Unlock a country to add it to your passport.</p>';
-    ui.passportLibraryList.innerHTML = '<p class="passport-empty">No country library yet.</p>';
-    return;
-  }
+  ui.passportMap.querySelectorAll(".globe-pin").forEach((pin) => {
+    const unlocked = countries.includes(pin.dataset.country);
+    pin.classList.toggle("unlocked", unlocked);
+    pin.classList.toggle("active", pin.dataset.country === state.activeCountry);
+    pin.setAttribute("aria-hidden", String(!unlocked));
+  });
+  const empty = ui.passportMap.querySelector(".passport-empty");
+  if (empty) empty.hidden = countries.length > 0;
 
-  ui.passportMap.innerHTML = countries
-    .map(
-      (country) => `
-        <button class="passport-country ${country === state.activeCountry ? "active" : ""}" data-country="${country}" type="button">
-          ${country}
-        </button>`,
-    )
-    .join("");
-
-  renderPassportLibrary();
+  ui.passportLibraryList.innerHTML = countries.length
+    ? countries.map((country) => {
+        const postcard = POSTCARD_DATA[country];
+        return `<button class="passport-postcard ${country === state.activeCountry ? "active" : ""}" data-country="${country}" type="button">
+          <span class="passport-postcard-art"><img src="${postcard.image}" alt="${postcard.alt}" /><span class="passport-postcard-stamp">${postcard.stamp}</span></span>
+          <span class="passport-postcard-copy"><strong>${country}</strong><span>${postcard.caption}</span><em>Open discoveries</em></span>
+        </button>`;
+      }).join("")
+    : '<p class="passport-empty">No postcards yet. Guess a country to start your collection.</p>';
 }
 
 function renderAlternates(category) {
