@@ -1167,6 +1167,9 @@ const ui = {
   quizFlip: document.querySelector("#postcard-flip"),
   quizType: document.querySelector("#quiz-type"),
   quizHeading: document.querySelector("#quiz-heading"),
+  flagHintButton: document.querySelector("#flag-hint-button"),
+  capitalHintButton: document.querySelector("#capital-hint-button"),
+  hintContent: document.querySelector("#hint-content"),
   postcardArt: document.querySelector("#postcard-art"),
   postcardStamp: document.querySelector("#postcard-stamp"),
   postcardCountry: document.querySelector("#postcard-country"),
@@ -1193,6 +1196,8 @@ function boot() {
     ui.savePostcardButton.classList.add("saved");
   });
   ui.newCountryButton.addEventListener("click", resetRound);
+  ui.flagHintButton.addEventListener("click", () => showHint("flag"));
+  ui.capitalHintButton.addEventListener("click", () => showHint("capital"));
   ui.revealPassportButton.addEventListener("click", openPassport);
   ui.passportButton.addEventListener("click", openPassport);
   ui.closePassportButton.addEventListener("click", closePassport);
@@ -1235,6 +1240,9 @@ function renderQuestion() {
   ui.quizType.textContent = state.question.type === "postcard" ? "Postcard clue" : state.question.type;
   ui.quizHeading.textContent = state.question.prompt;
   ui.quizClue.innerHTML = state.question.render();
+  ui.hintContent.innerHTML = "";
+  ui.flagHintButton.disabled = false;
+  ui.capitalHintButton.disabled = false;
 
   ui.answerGrid.innerHTML = "";
   shuffle(state.question.options).forEach((option) => {
@@ -1245,6 +1253,38 @@ function renderQuestion() {
     button.addEventListener("click", () => answer(option));
     ui.answerGrid.appendChild(button);
   });
+}
+
+function showHint(type) {
+  const country = state.question.answerCountry;
+  const hintData = {
+    Lebanon: {
+      flag: {
+        label: "The flag has a cedar tree at its center.",
+        content: '<img class="hint-flag" src="./assets/media/flag-lebanon.svg" alt="Flag of Lebanon" />',
+      },
+      capital: { label: "The capital is Beirut.", content: '<strong class="hint-capital">Beirut</strong>' },
+    },
+    Mexico: {
+      flag: {
+        label: "The flag has a coat of arms in its center.",
+        content: '<img class="hint-flag" src="./assets/media/flag-mexico.png" alt="Flag of Mexico" />',
+      },
+      capital: { label: "The capital is Mexico City.", content: '<strong class="hint-capital">Mexico City</strong>' },
+    },
+    Japan: {
+      flag: {
+        label: "The flag is a red sun on white.",
+        content: '<img class="hint-flag" src="./assets/media/flag-japan.svg" alt="Flag of Japan" />',
+      },
+      capital: { label: "The capital is Tokyo.", content: '<strong class="hint-capital">Tokyo</strong>' },
+    },
+  };
+  const hint = hintData[country]?.[type];
+  if (!hint) return;
+  ui.hintContent.innerHTML = `<span>${hint.label}</span>${hint.content}`;
+  if (type === "flag") ui.flagHintButton.disabled = true;
+  if (type === "capital") ui.capitalHintButton.disabled = true;
 }
 
 function answer(option) {

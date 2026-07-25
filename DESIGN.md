@@ -77,5 +77,5 @@
 
 - Target routes or screens: quiz, discovery, passport
 - Viewports or devices: wide desktop and narrow mobile
-- Primary flow: mystery scene -> guess -> postcard flip -> optional discoveries -> collect -> revisit country
+- Primary flow: mystery scene -> optional flag/capital hint -> guess -> postcard flip -> optional discoveries -> collect -> next country
 - Accessibility checks: button labels, image alt text, focus order, reduced-motion-safe layout
