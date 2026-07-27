@@ -685,7 +685,7 @@ const COUNTRY_EXTRAS = {
       externalUrl: "https://www.google.com/search?q=Yayoi+Kusama+art",
       media: () => `
         <div class="media-card">
-          <img src="./assets/media/yayoi-kusama.jpg" alt="Yayoi Kusama" />
+          <img src="./assets/media/kusama-art-v1.png" alt="Contemporary Japanese installation artwork with mirrors and repeating polka-dot forms" />
           <div class="media-meta">
             <strong>Yayoi Kusama</strong>
             <p>Pattern, obsession, and color become the point of view.</p>
@@ -811,6 +811,27 @@ const COUNTRY_EXTRAS = {
   ],
   Japan: [
     {
+      type: "taste",
+      title: "Katsu sando",
+      verb: "TASTE",
+      copy:
+        "A crisp pork cutlet tucked into soft milk bread, katsu sando is a neat, satisfying Japanese convenience-food classic.",
+      note: "Why this pick: it adds a deeply craveable everyday food lane beside onigiri.",
+      externalLabel: "Explore the dish",
+      externalUrl: "https://www.google.com/search?q=katsu+sando",
+      media: () => `
+        <div class="media-card media-card-text">
+          <div class="media-card-title-art"><span>KATSU</span><strong>SANDO</strong></div>
+          <div class="media-meta">
+            <strong>Crisp, soft, perfectly contained.</strong>
+            <p>Japanese comfort food with a convenience-store silhouette and a serious texture payoff.</p>
+            <a class="inline-link" href="https://www.google.com/search?q=katsu+sando" target="_blank" rel="noreferrer noopener">
+              Explore the dish
+            </a>
+          </div>
+        </div>`,
+    },
+    {
       type: "see",
       title: "Tokyo Tower",
       verb: "SEE",
@@ -850,6 +871,48 @@ const COUNTRY_EXTRAS = {
               Open in YouTube
             </a>
           </div>
+      </div>`,
+    },
+    {
+      type: "listen",
+      title: "Perfume",
+      verb: "LISTEN",
+      copy:
+        "Perfume makes polished electronic pop that feels futuristic, precise, and instantly hooky.",
+      note: "Why this pick: it gives the J-pop lane a bright, high-concept modern entry point.",
+      externalLabel: "Open in YouTube",
+      externalUrl: "https://www.youtube.com/results?search_query=Perfume+Japanese+pop+music",
+      media: () => `
+        <div class="media-card media-card-text">
+          <div class="media-card-title-art media-card-title-art--violet"><span>J-POP</span><strong>PERFUME</strong></div>
+          <div class="media-meta">
+            <strong>Pop as choreography and machine.</strong>
+            <p>Start with the precision, repetition, and futuristic sheen.</p>
+            <a class="inline-link" href="https://www.youtube.com/results?search_query=Perfume+Japanese+pop+music" target="_blank" rel="noreferrer noopener">
+              Open in YouTube
+            </a>
+          </div>
+        </div>`,
+    },
+    {
+      type: "read",
+      title: "The Pillow Book",
+      verb: "READ",
+      copy:
+        "Sei Shōnagon's observations turn court life, weather, clothing, and tiny social judgments into sharp, intimate literature.",
+      note: "Why this pick: it opens a very different reading window from the contemporary novels.",
+      externalLabel: "Open book link",
+      externalUrl: "https://openlibrary.org/search?q=The+Pillow+Book+Sei+Shonagon",
+      media: () => `
+        <div class="media-card media-card-text">
+          <div class="media-card-title-art media-card-title-art--paper"><span>NOTES ON</span><strong>THE EVERYDAY</strong></div>
+          <div class="media-meta">
+            <strong>Sei Shōnagon</strong>
+            <p>Witty, observant, and full of tiny details that still feel startlingly alive.</p>
+            <a class="inline-link" href="https://openlibrary.org/search?q=The+Pillow+Book+Sei+Shonagon" target="_blank" rel="noreferrer noopener">
+              Open book link
+            </a>
+          </div>
         </div>`,
     },
     {
@@ -863,7 +926,7 @@ const COUNTRY_EXTRAS = {
       externalUrl: "https://www.google.com/search?q=Takashi+Murakami+art",
       media: () => `
         <div class="media-card">
-          <img src="./assets/media/takashi-murakami.jpg" alt="Takashi Murakami" />
+          <img src="./assets/media/takashi-art-v1.png" alt="Bright contemporary Japanese pop-art artwork with smiling flowers" />
           <div class="media-meta">
             <strong>Takashi Murakami</strong>
             <p>Bright, glossy, and unmistakably contemporary.</p>
@@ -1105,7 +1168,7 @@ const COUNTRY_LIBRARY = {
       saveItem: "artist · Yayoi Kusama",
       media: () => `
         <div class="media-card">
-          <img src="./assets/media/yayoi-kusama.jpg" alt="Yayoi Kusama" />
+          <img src="./assets/media/kusama-art-v1.png" alt="Contemporary Japanese installation artwork with mirrors and repeating polka-dot forms" />
           <div class="media-meta">
             <strong>Yayoi Kusama</strong>
             <p>Pattern, color, and total visual commitment.</p>
@@ -1233,6 +1296,11 @@ function boot() {
     selectAlternate(button.dataset.category, Number(button.dataset.index));
   });
   ui.passportMap.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-country]");
+    if (!button) return;
+    openCountry(button.dataset.country);
+  });
+  ui.passportLibraryList.addEventListener("click", (event) => {
     const button = event.target.closest("[data-country]");
     if (!button) return;
     openCountry(button.dataset.country);

@@ -734,9 +734,10 @@ h1 {
 .passport-zoom-note input { width: 90px; accent-color: var(--orange); }
 .passport-globe { --globe-scale: 1; position: relative; min-height: 300px; overflow: hidden; border-radius: 24px; isolation: isolate; background: radial-gradient(circle at 35% 28%, #eff9ec 0 8%, transparent 8.5%), linear-gradient(135deg, #8bd1e1, #f8d995 72%, #f49a68); box-shadow: inset 0 0 0 8px rgba(255,255,255,.42); }
 .globe-zoom-layer { position: absolute; inset: 0; transform: scale(var(--globe-scale)); transform-origin: center; transition: transform .2s ease; }
+.passport-world-map { position: absolute; inset: 7% 4%; z-index: 1; width: 92%; height: 86%; object-fit: contain; opacity: .72; mix-blend-mode: multiply; filter: sepia(.18) saturate(.8) hue-rotate(105deg); }
 .passport-globe::before { content: ""; position: absolute; inset: 11% 7%; border: 2px solid rgba(255,255,255,.6); border-radius: 50%; transform: rotate(-12deg); }
 .globe-grid { position: absolute; inset: 0; opacity: .35; background: repeating-linear-gradient(90deg, transparent 0 46px, rgba(255,255,255,.5) 47px 48px), repeating-linear-gradient(0deg, transparent 0 42px, rgba(255,255,255,.4) 43px 44px); }
-.globe-land { position: absolute; background: #5b9e78; border: 3px solid #315d5f; opacity: .9; }
+.globe-land { display: none; position: absolute; background: #5b9e78; border: 3px solid #315d5f; opacity: .9; }
 .land-one { width: 28%; height: 26%; left: 9%; top: 29%; border-radius: 58% 42% 52% 48%; transform: rotate(-18deg); }
 .land-two { width: 36%; height: 19%; left: 33%; top: 20%; border-radius: 45% 55% 40% 60%; transform: rotate(9deg); }
 .land-three { width: 24%; height: 29%; right: 10%; top: 35%; border-radius: 38% 62% 50% 50%; transform: rotate(22deg); }
@@ -744,9 +745,9 @@ h1 {
 .globe-pin span { transform: rotate(45deg); }
 .globe-pin.unlocked { display: grid; }
 .globe-pin.active { background: var(--ink); }
-.pin-lebanon { left: 57%; top: 35%; }
-.pin-mexico { left: 25%; top: 55%; }
-.pin-japan { right: 16%; top: 32%; }
+.pin-lebanon { left: 65%; top: 37%; }
+.pin-mexico { left: 28%; top: 55%; }
+.pin-japan { right: 10%; top: 37%; }
 .passport-postcards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
 .passport-postcard { display: grid; gap: 12px; padding: 0 0 14px; overflow: hidden; text-align: left; border: 1px solid rgba(22,56,90,.12); border-radius: 18px; background: #fffaf0; box-shadow: 0 8px 0 rgba(22,56,90,.08); cursor: pointer; transition: transform .2s ease, box-shadow .2s ease; }
 .passport-postcard:hover, .passport-postcard.active { transform: translateY(-4px) rotate(-1deg); box-shadow: 0 12px 0 rgba(22,56,90,.12); }
@@ -758,6 +759,12 @@ h1 {
 .passport-postcard-copy span { color: var(--muted); font-size: .9rem; }
 .passport-postcard-copy em { margin-top: 7px; color: var(--orange); font-size: .78rem; font-style: normal; font-weight: 800; }
 .passport-postcards-panel .passport-empty { padding: 20px 0; }
+.media-card-text { background: #f2d7c4; }
+.media-card-title-art { display: grid; align-content: center; min-height: 250px; padding: 28px; background: linear-gradient(145deg, #f06f45, #f7bd4b); color: #fffaf0; font-family: var(--font-display); }
+.media-card-title-art span { font-size: .85rem; letter-spacing: .18em; }
+.media-card-title-art strong { font-size: clamp(2.6rem, 8vw, 5rem); line-height: .84; }
+.media-card-title-art--violet { background: linear-gradient(145deg, #30245f, #b88bd7); }
+.media-card-title-art--paper { background: linear-gradient(145deg, #e9ddc8, #ad7462); color: #fffaf0; }
 
 @media (max-width: 700px) {
   .passport-header { grid-template-columns: 1fr; }
