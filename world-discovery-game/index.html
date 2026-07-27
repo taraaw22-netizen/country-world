@@ -135,12 +135,13 @@
               </div>
               <div class="passport-globe" id="passport-map" aria-label="Illustrated world map of guessed countries">
                 <div class="globe-zoom-layer">
-                  <img class="passport-world-map" src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg" alt="World map showing country outlines" />
+                  <svg class="passport-world-map" viewBox="0 0 1000 500" role="img" aria-label="World map with collected countries highlighted">
+                    <image href="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg" x="0" y="0" width="1000" height="500" preserveAspectRatio="none" />
+                    <path class="map-country map-country-lebanon" data-country="Lebanon" tabindex="0" role="button" d="M598 157 L603 160 L601 166 L598 172 L594 168 L595 161 Z"><title>Lebanon</title></path>
+                    <path class="map-country map-country-mexico" data-country="Mexico" tabindex="0" role="button" d="M175 161 L193 158 L207 164 L220 169 L231 181 L240 188 L250 194 L259 190 L261 202 L253 207 L244 210 L232 207 L220 211 L210 205 L201 199 L190 195 L184 186 L178 178 L173 169 Z"><title>Mexico</title></path>
+                    <path class="map-country map-country-japan" data-country="Japan" tabindex="0" role="button" d="M866 132 L873 126 L879 130 L877 137 L883 142 L880 150 L874 154 L870 162 L865 158 L867 150 L862 145 Z M884 169 L891 172 L888 178 L883 175 Z"><title>Japan</title></path>
+                  </svg>
                   <div class="globe-grid"></div>
-                  <div class="globe-land land-one"></div><div class="globe-land land-two"></div><div class="globe-land land-three"></div>
-                  <div class="globe-pin pin-lebanon" data-country="Lebanon"><span>LB</span></div>
-                  <div class="globe-pin pin-mexico" data-country="Mexico"><span>MX</span></div>
-                  <div class="globe-pin pin-japan" data-country="Japan"><span>JP</span></div>
                 </div>
                 <p class="passport-empty">Unlock a country to add it to your passport.</p>
               </div>

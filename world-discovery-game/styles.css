@@ -734,7 +734,12 @@ h1 {
 .passport-zoom-note input { width: 90px; accent-color: var(--orange); }
 .passport-globe { --globe-scale: 1; position: relative; min-height: 300px; overflow: hidden; border-radius: 24px; isolation: isolate; background: radial-gradient(circle at 35% 28%, #eff9ec 0 8%, transparent 8.5%), linear-gradient(135deg, #8bd1e1, #f8d995 72%, #f49a68); box-shadow: inset 0 0 0 8px rgba(255,255,255,.42); }
 .globe-zoom-layer { position: absolute; inset: 0; transform: scale(var(--globe-scale)); transform-origin: center; transition: transform .2s ease; }
-.passport-world-map { position: absolute; inset: 7% 4%; z-index: 1; width: 92%; height: 86%; object-fit: contain; opacity: .72; mix-blend-mode: multiply; filter: sepia(.18) saturate(.8) hue-rotate(105deg); }
+.passport-world-map { position: absolute; inset: 7% 4%; z-index: 1; width: 92%; height: 86%; overflow: visible; }
+.passport-world-map image { opacity: .28; filter: grayscale(1) sepia(.15) saturate(.65); }
+.map-country { display: none; pointer-events: none; stroke: #fffaf0; stroke-width: 2.5; stroke-linejoin: round; cursor: pointer; transition: fill .2s ease, stroke-width .2s ease; }
+.map-country.unlocked { display: block; pointer-events: auto; fill: var(--orange); }
+.map-country.active { fill: var(--ink); stroke-width: 4; }
+.map-country:hover, .map-country:focus { stroke-width: 5; }
 .passport-globe::before { content: ""; position: absolute; inset: 11% 7%; border: 2px solid rgba(255,255,255,.6); border-radius: 50%; transform: rotate(-12deg); }
 .globe-grid { position: absolute; inset: 0; opacity: .35; background: repeating-linear-gradient(90deg, transparent 0 46px, rgba(255,255,255,.5) 47px 48px), repeating-linear-gradient(0deg, transparent 0 42px, rgba(255,255,255,.4) 43px 44px); }
 .globe-land { display: none; position: absolute; background: #5b9e78; border: 3px solid #315d5f; opacity: .9; }

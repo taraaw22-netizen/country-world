@@ -1356,6 +1356,12 @@ function boot() {
     if (!button) return;
     openCountry(button.dataset.country);
   });
+  ui.passportMap.addEventListener("keydown", (event) => {
+    const button = event.target.closest("[data-country]");
+    if (!button || !["Enter", " "].includes(event.key)) return;
+    event.preventDefault();
+    openCountry(button.dataset.country);
+  });
   ui.passportLibraryList.addEventListener("click", (event) => {
     const button = event.target.closest("[data-country]");
     if (!button) return;
@@ -1535,11 +1541,11 @@ function renderPassport() {
     ? `${countries.length} postcard${countries.length === 1 ? "" : "s"} collected. Tap one to revisit its discoveries.`
     : "Your postcard world will fill out as you play.";
 
-  ui.passportMap.querySelectorAll(".globe-pin").forEach((pin) => {
-    const unlocked = countries.includes(pin.dataset.country);
-    pin.classList.toggle("unlocked", unlocked);
-    pin.classList.toggle("active", pin.dataset.country === state.activeCountry);
-    pin.setAttribute("aria-hidden", String(!unlocked));
+  ui.passportMap.querySelectorAll(".map-country").forEach((countryShape) => {
+    const unlocked = countries.includes(countryShape.dataset.country);
+    countryShape.classList.toggle("unlocked", unlocked);
+    countryShape.classList.toggle("active", countryShape.dataset.country === state.activeCountry);
+    countryShape.setAttribute("aria-hidden", String(!unlocked));
   });
   const empty = ui.passportMap.querySelector(".passport-empty");
   if (empty) empty.hidden = countries.length > 0;
