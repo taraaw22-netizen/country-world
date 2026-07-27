@@ -1269,6 +1269,7 @@ const state = {
   activeKey: "taste",
   activeCountry: "Lebanon",
   openingQuestion: true,
+  mapPan: { x: 0, y: 0, dragging: false, moved: false, startX: 0, startY: 0, originX: 0, originY: 0 },
   activeIndexByCategory: {
     taste: 0,
     listen: 0,
@@ -1291,6 +1292,7 @@ const ui = {
   nextButton: document.querySelector("#next-button"),
   passportButton: document.querySelector("#passport-button"),
   passportMap: document.querySelector("#passport-map"),
+  passportWorldSvg: document.querySelector("#passport-world-svg"),
   passportScreen: document.querySelector("#passport-screen"),
   closePassportButton: document.querySelector("#close-passport-button"),
   passportCountryCount: document.querySelector("#passport-country-count"),
@@ -1330,6 +1332,7 @@ function boot() {
   pickQuestion();
   renderQuestion();
   renderPassport();
+  loadWorldMap();
 
   ui.nextButton.addEventListener("click", resetRound);
   ui.exploreButton.addEventListener("click", () => openCountry(state.activeCountry));
@@ -1352,6 +1355,10 @@ function boot() {
     selectAlternate(button.dataset.category, Number(button.dataset.index));
   });
   ui.passportMap.addEventListener("click", (event) => {
+    if (state.mapPan.moved) {
+      state.mapPan.moved = false;
+      return;
+    }
     const button = event.target.closest("[data-country]");
     if (!button) return;
     openCountry(button.dataset.country);
@@ -1369,7 +1376,83 @@ function boot() {
   });
   ui.passportZoom.addEventListener("input", (event) => {
     ui.passportMap.style.setProperty("--globe-scale", event.target.value);
+    if (Number(event.target.value) <= 1) setMapPan(0, 0);
   });
+  ui.passportMap.addEventListener("pointerdown", startMapPan);
+  ui.passportMap.addEventListener("pointermove", moveMapPan);
+  ui.passportMap.addEventListener("pointerup", endMapPan);
+  ui.passportMap.addEventListener("pointercancel", endMapPan);
+}
+
+function startMapPan(event) {
+  if (Number(ui.passportZoom.value) <= 1) return;
+  state.mapPan.dragging = true;
+  state.mapPan.moved = false;
+  state.mapPan.startX = event.clientX;
+  state.mapPan.startY = event.clientY;
+  state.mapPan.originX = state.mapPan.x;
+  state.mapPan.originY = state.mapPan.y;
+  ui.passportMap.classList.add("is-panning");
+  ui.passportMap.setPointerCapture?.(event.pointerId);
+}
+
+function moveMapPan(event) {
+  if (!state.mapPan.dragging) return;
+  const dx = event.clientX - state.mapPan.startX;
+  const dy = event.clientY - state.mapPan.startY;
+  if (Math.abs(dx) + Math.abs(dy) > 4) state.mapPan.moved = true;
+  setMapPan(state.mapPan.originX + dx, state.mapPan.originY + dy);
+}
+
+function endMapPan(event) {
+  if (!state.mapPan.dragging) return;
+  state.mapPan.dragging = false;
+  ui.passportMap.classList.remove("is-panning");
+  ui.passportMap.releasePointerCapture?.(event.pointerId);
+}
+
+function setMapPan(x, y) {
+  state.mapPan.x = x;
+  state.mapPan.y = y;
+  ui.passportMap.style.setProperty("--globe-pan-x", `${x}px`);
+  ui.passportMap.style.setProperty("--globe-pan-y", `${y}px`);
+}
+
+async function loadWorldMap() {
+  try {
+    const response = await fetch("https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson");
+    if (!response.ok) throw new Error(`World map request failed: ${response.status}`);
+    const geojson = await response.json();
+    const paths = geojson.features.map((feature) => {
+      const name = feature.properties?.ADMIN || feature.properties?.NAME || feature.properties?.name;
+      const geometry = feature.geometry;
+      if (!name || !geometry) return "";
+      const d = geometry.type === "Polygon"
+        ? polygonPath(geometry.coordinates)
+        : geometry.type === "MultiPolygon"
+          ? geometry.coordinates.map(polygonPath).join(" ")
+          : "";
+      return d ? `<path class="map-country" data-country="${escapeHtml(name)}" tabindex="0" role="button" d="${d}"><title>${escapeHtml(name)}</title></path>` : "";
+    }).join("");
+    if (paths) {
+      ui.passportWorldSvg.innerHTML = paths;
+      renderPassport();
+    }
+  } catch (error) {
+    console.warn("Using the fallback passport map.", error);
+  }
+}
+
+function polygonPath(rings) {
+  return rings.map((ring) => ring.map(([longitude, latitude], index) => {
+    const x = ((longitude + 180) / 360) * 1000;
+    const y = ((90 - latitude) / 180) * 500;
+    return `${index === 0 ? "M" : "L"}${x.toFixed(2)} ${y.toFixed(2)}`;
+  }).join(" ") + " Z").join(" ");
+}
+
+function escapeHtml(value) {
+  return String(value).replace(/[&<>\"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#039;" }[character]));
 }
 
 function pickQuestion() {
