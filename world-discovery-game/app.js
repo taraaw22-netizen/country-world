@@ -604,6 +604,17 @@ const COUNTRY_EXTRAS = {
       externalUrl: "https://openlibrary.org/search?q=Valeria+Luiselli",
       media: () => `<div class="media-card media-card-text"><div class="media-card-title-art media-card-title-art--paper"><span>MEXICO / LANGUAGE</span><strong>VALERIA</strong></div><div class="media-meta"><strong>Valeria Luiselli</strong><p>Playful, political, and formally inventive.</p><a class="inline-link" href="https://openlibrary.org/search?q=Valeria+Luiselli" target="_blank" rel="noreferrer noopener">Open book link</a></div></div>`,
     },
+    {
+      type: "fashion",
+      title: "Benito Santos",
+      verb: "FASHION",
+      copy: "Benito Santos is a strong second Mexican fashion voice: formal, precise, and rooted in the drama of occasion dressing.",
+      note: "Why this pick: it gives Mexico a second silhouette beside Carla Fernández's craft-led language.",
+      externalLabel: "See the collection",
+      externalUrl: "https://www.vogue.com/fashion-shows/mexico-fall-2024/benito-santos",
+      saveItem: "designer · Benito Santos",
+      media: () => `<div class="media-card fashion-media"><img src="https://assets.vogue.com/photos/6614e74cb447f339a48a9ccf/master/w_2560%2Cc_limit/00001-benito-santos-fall-2024-mexico-credit-brand.jpg" alt="Benito Santos runway garment from the Mexico Fall 2024 collection" loading="lazy" /><div class="media-meta"><strong>Formal Mexican fashion, turned up.</strong><p>Structure, ceremony, and a confident sense of occasion.</p><a class="inline-link" href="https://www.vogue.com/fashion-shows/mexico-fall-2024/benito-santos" target="_blank" rel="noreferrer noopener">See the collection</a></div></div>`,
+    },
   ],
   Japan: [
     {
@@ -958,6 +969,17 @@ const COUNTRY_EXTRAS = {
           </div>
         </div>`,
     },
+    {
+      type: "fashion",
+      title: "Nigo",
+      verb: "FASHION",
+      copy: "Nigo brings Tokyo street culture, archival references, and pop design into a global fashion vocabulary through KENZO.",
+      note: "Why this pick: it gives Japan a second fashion angle beside Rei Kawakubo's sculptural experimentation.",
+      externalLabel: "See the collection",
+      externalUrl: "https://www.vogue.co.jp/fashion/article/kenzo-mens-2023-ss-collection",
+      saveItem: "designer · Nigo",
+      media: () => `<div class="media-card fashion-media"><img src="https://media.vogue.co.jp/photos/62bb09cff39a7a1d2e902887/master/w_1600%2Cc_limit/00001-kenzo-spring-2023-ready-to-wear-credit-gorunway.jpg" alt="KENZO runway garment from Nigo's Spring 2023 collection" loading="lazy" /><div class="media-meta"><strong>Street culture in a tailored frame.</strong><p>Archival symbols, color, and youth culture move through the collection.</p><a class="inline-link" href="https://www.vogue.co.jp/fashion/article/kenzo-mens-2023-ss-collection" target="_blank" rel="noreferrer noopener">See the collection</a></div></div>`,
+    },
   ],
 };
 
@@ -1214,7 +1236,7 @@ const FASHION_LIBRARY = {
     externalLabel: "See the designer",
     externalUrl: "https://www.google.com/search?q=Rabih+Kayrouz+Lebanese+designer",
     saveItem: "designer · Rabih Kayrouz",
-    media: () => `<div class="media-card media-card-text"><div class="media-card-title-art media-card-title-art--paper"><span>BEIRUT / DESIGN</span><strong>KAYROUZ</strong></div><div class="media-meta"><strong>Tailoring with a Beirut point of view.</strong><p>Soft structure, clean lines, and a sense of movement.</p><a class="inline-link" href="https://www.google.com/search?q=Rabih+Kayrouz+Lebanese+designer" target="_blank" rel="noreferrer noopener">See the designer</a></div></div>`,
+    media: () => `<div class="media-card fashion-media"><img src="https://assets.vogue.com/photos/65e0723f45cd06b09c65b395/master/w_2560%2Cc_limit/00001-maison-rabih-kayrouz-fall-2024-ready-to-wear-credit-mariano-bocanegra-brand.jpg" alt="Rabih Kayrouz runway garment from the Fall 2024 collection" loading="lazy" /><div class="media-meta"><strong>Tailoring with a Beirut point of view.</strong><p>Soft structure, clean lines, and a sense of movement.</p><a class="inline-link" href="https://www.vogue.com/fashion-shows/fall-2024-ready-to-wear/maison-rabih-kayrouz/slideshow/collection" target="_blank" rel="noreferrer noopener">See the collection</a></div></div>`,
   },
   Mexico: {
     verb: "FASHION",
@@ -1224,7 +1246,7 @@ const FASHION_LIBRARY = {
     externalLabel: "See the designer",
     externalUrl: "https://www.google.com/search?q=Carla+Fernandez+Mexican+fashion+designer",
     saveItem: "designer · Carla Fernández",
-    media: () => `<div class="media-card media-card-text"><div class="media-card-title-art"><span>MEXICO / TEXTILE</span><strong>CARLA<br>FERNÁNDEZ</strong></div><div class="media-meta"><strong>Tradition with a new silhouette.</strong><p>Craft, geometry, and contemporary dressing meet here.</p><a class="inline-link" href="https://www.google.com/search?q=Carla+Fernandez+Mexican+fashion+designer" target="_blank" rel="noreferrer noopener">See the designer</a></div></div>`,
+    media: () => `<div class="media-card fashion-media"><img src="https://cdn.shopify.com/s/files/1/0023/1325/7033/files/sp-uniforms-00.png" alt="Carla Fernández uniform garment" loading="lazy" /><div class="media-meta"><strong>Tradition with a new silhouette.</strong><p>Craft, geometry, and contemporary dressing meet here.</p><a class="inline-link" href="https://www.carlafernandez.com/pages/uniformes" target="_blank" rel="noreferrer noopener">See the collection</a></div></div>`,
   },
   Japan: {
     verb: "FASHION",
@@ -1234,7 +1256,7 @@ const FASHION_LIBRARY = {
     externalLabel: "See the designer",
     externalUrl: "https://www.google.com/search?q=Rei+Kawakubo+Comme+des+Garcons",
     saveItem: "designer · Rei Kawakubo",
-    media: () => `<div class="media-card media-card-text"><div class="media-card-title-art media-card-title-art--violet"><span>TOKYO / FORM</span><strong>REI<br>KAWAKUBO</strong></div><div class="media-meta"><strong>Clothes as ideas.</strong><p>Volume, asymmetry, and refusal become a design language.</p><a class="inline-link" href="https://www.google.com/search?q=Rei+Kawakubo+Comme+des+Garcons" target="_blank" rel="noreferrer noopener">See the designer</a></div></div>`,
+    media: () => `<div class="media-card fashion-media"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Comme_des_Garcons_at_the_Met_%2862473%29.jpg/960px-Comme_des_Garcons_at_the_Met_%2862473%29.jpg" alt="Comme des Garçons garment from the Rei Kawakubo exhibition" loading="lazy" /><div class="media-meta"><strong>Clothes as ideas.</strong><p>Volume, asymmetry, and refusal become a design language.</p><a class="inline-link" href="https://commons.wikimedia.org/wiki/File%3AComme_des_Garcons_at_the_Met_%2862473%29.jpg" target="_blank" rel="noreferrer noopener">See the garment</a></div></div>`,
   },
 };
 
@@ -1361,18 +1383,18 @@ function boot() {
     }
     const button = event.target.closest("[data-country]");
     if (!button) return;
-    openCountry(button.dataset.country);
+    focusPassportCard(button.dataset.country);
   });
   ui.passportMap.addEventListener("keydown", (event) => {
     const button = event.target.closest("[data-country]");
     if (!button || !["Enter", " "].includes(event.key)) return;
     event.preventDefault();
-    openCountry(button.dataset.country);
+    focusPassportCard(button.dataset.country);
   });
   ui.passportLibraryList.addEventListener("click", (event) => {
     const button = event.target.closest("[data-country]");
     if (!button) return;
-    openCountry(button.dataset.country);
+    openPostcard(button.dataset.country);
   });
   ui.passportZoom.addEventListener("input", (event) => {
     ui.passportMap.style.setProperty("--globe-scale", event.target.value);
@@ -1638,7 +1660,7 @@ function renderPassport() {
         const postcard = POSTCARD_DATA[country];
         return `<button class="passport-postcard ${country === state.activeCountry ? "active" : ""}" data-country="${country}" type="button">
           <span class="passport-postcard-art"><img src="${postcard.image}" alt="${postcard.alt}" /><span class="passport-postcard-stamp">${postcard.stamp}</span></span>
-          <span class="passport-postcard-copy"><strong>${country}</strong><span>${postcard.caption}</span><em>Open discoveries</em></span>
+          <span class="passport-postcard-copy"><strong>${country}</strong><span>${postcard.caption}</span><em>View postcard</em></span>
         </button>`;
       }).join("")
     : '<p class="passport-empty">No postcards yet. Guess a country to start your collection.</p>';
@@ -1702,6 +1724,15 @@ function openPassport() {
 function closePassport() {
   ui.passportScreen.classList.add("hidden");
   ui.passportScreen.setAttribute("aria-hidden", "true");
+}
+
+function focusPassportCard(country) {
+  state.activeCountry = country;
+  renderPassport();
+  const card = ui.passportLibraryList.querySelector(`[data-country="${country}"]`);
+  if (!card) return;
+  card.scrollIntoView({ behavior: "smooth", block: "center" });
+  card.focus({ preventScroll: true });
 }
 
 function renderPassportLibrary() {
