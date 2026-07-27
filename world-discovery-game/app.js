@@ -583,6 +583,28 @@ const COUNTRY_EXTRAS = {
         </div>`,
     },
   ],
+  Mexico: [
+    {
+      type: "listen",
+      title: "Peso Pluma",
+      verb: "LISTEN",
+      copy: "Peso Pluma helped push regional Mexican music into the global pop conversation, bringing corridos tumbados to a new generation.",
+      note: "Why this pick: it is a current, unmistakable sound of Mexico's cultural moment.",
+      externalLabel: "Open in YouTube",
+      externalUrl: "https://www.youtube.com/results?search_query=Peso+Pluma+music",
+      media: () => `<div class="media-card media-card-text"><div class="media-card-title-art media-card-title-art--violet"><span>REGIONAL / NOW</span><strong>PESO<br>PLUMA</strong></div><div class="media-meta"><strong>Corridos tumbados go global.</strong><p>A contemporary sound with deep roots and a very modern edge.</p><a class="inline-link" href="https://www.youtube.com/results?search_query=Peso+Pluma+music" target="_blank" rel="noreferrer noopener">Open in YouTube</a></div></div>`,
+    },
+    {
+      type: "read",
+      title: "Valeria Luiselli",
+      verb: "READ",
+      copy: "Valeria Luiselli writes across Mexico City, New York, migration, memory, and language with a restless contemporary intelligence.",
+      note: "Why this pick: it gives the reading lane a living voice with international reach.",
+      externalLabel: "Open book link",
+      externalUrl: "https://openlibrary.org/search?q=Valeria+Luiselli",
+      media: () => `<div class="media-card media-card-text"><div class="media-card-title-art media-card-title-art--paper"><span>MEXICO / LANGUAGE</span><strong>VALERIA</strong></div><div class="media-meta"><strong>Valeria Luiselli</strong><p>Playful, political, and formally inventive.</p><a class="inline-link" href="https://openlibrary.org/search?q=Valeria+Luiselli" target="_blank" rel="noreferrer noopener">Open book link</a></div></div>`,
+    },
+  ],
   Japan: [
     {
       type: "taste",
@@ -1183,6 +1205,39 @@ const COUNTRY_LIBRARY = {
 
 const storageKey = "country-world-media-passport";
 
+const FASHION_LIBRARY = {
+  Lebanon: {
+    verb: "FASHION",
+    title: "Rabih Kayrouz",
+    copy: "Rabih Kayrouz brings Beirut's architecture, tailoring, and ease into a modern fashion language that feels distinctly Lebanese without turning heritage into costume.",
+    note: "Why this pick: fashion becomes a living way to read Beirut's design intelligence.",
+    externalLabel: "See the designer",
+    externalUrl: "https://www.google.com/search?q=Rabih+Kayrouz+Lebanese+designer",
+    saveItem: "designer · Rabih Kayrouz",
+    media: () => `<div class="media-card media-card-text"><div class="media-card-title-art media-card-title-art--paper"><span>BEIRUT / DESIGN</span><strong>KAYROUZ</strong></div><div class="media-meta"><strong>Tailoring with a Beirut point of view.</strong><p>Soft structure, clean lines, and a sense of movement.</p><a class="inline-link" href="https://www.google.com/search?q=Rabih+Kayrouz+Lebanese+designer" target="_blank" rel="noreferrer noopener">See the designer</a></div></div>`,
+  },
+  Mexico: {
+    verb: "FASHION",
+    title: "Carla Fernández",
+    copy: "Carla Fernández builds contemporary clothing with Indigenous Mexican textile traditions and collaborative craft at the center.",
+    note: "Why this pick: it shows fashion as design, community, and living material culture.",
+    externalLabel: "See the designer",
+    externalUrl: "https://www.google.com/search?q=Carla+Fernandez+Mexican+fashion+designer",
+    saveItem: "designer · Carla Fernández",
+    media: () => `<div class="media-card media-card-text"><div class="media-card-title-art"><span>MEXICO / TEXTILE</span><strong>CARLA<br>FERNÁNDEZ</strong></div><div class="media-meta"><strong>Tradition with a new silhouette.</strong><p>Craft, geometry, and contemporary dressing meet here.</p><a class="inline-link" href="https://www.google.com/search?q=Carla+Fernandez+Mexican+fashion+designer" target="_blank" rel="noreferrer noopener">See the designer</a></div></div>`,
+  },
+  Japan: {
+    verb: "FASHION",
+    title: "Rei Kawakubo",
+    copy: "Rei Kawakubo made fashion feel conceptual, disruptive, and sculptural. Comme des Garçons remains one of Japan's clearest global design signatures.",
+    note: "Why this pick: it gives Japan a fashion reference as important and recognizable as its art and music.",
+    externalLabel: "See the designer",
+    externalUrl: "https://www.google.com/search?q=Rei+Kawakubo+Comme+des+Garcons",
+    saveItem: "designer · Rei Kawakubo",
+    media: () => `<div class="media-card media-card-text"><div class="media-card-title-art media-card-title-art--violet"><span>TOKYO / FORM</span><strong>REI<br>KAWAKUBO</strong></div><div class="media-meta"><strong>Clothes as ideas.</strong><p>Volume, asymmetry, and refusal become a design language.</p><a class="inline-link" href="https://www.google.com/search?q=Rei+Kawakubo+Comme+des+Garcons" target="_blank" rel="noreferrer noopener">See the designer</a></div></div>`,
+  },
+};
+
 const POSTCARD_DATA = {
   Lebanon: {
     image: "./assets/media/lebanon-postcard-concept-v1.png",
@@ -1220,6 +1275,7 @@ const state = {
     read: 0,
     see: 0,
     create: 0,
+    fashion: 0,
   },
 };
 
@@ -1517,7 +1573,9 @@ function renderAlternates(category) {
 }
 
 function getCategoryItems(category) {
-  const primary = COUNTRY_LIBRARY[state.activeCountry]?.[category];
+  const primary = category === "fashion"
+    ? FASHION_LIBRARY[state.activeCountry]
+    : COUNTRY_LIBRARY[state.activeCountry]?.[category];
   const extras = (COUNTRY_EXTRAS[state.activeCountry] || []).filter((item) => item.type === category);
   return [primary, ...extras];
 }
@@ -1529,6 +1587,7 @@ function resetCategoryIndexes() {
     read: 0,
     see: 0,
     create: 0,
+    fashion: 0,
   };
 }
 
@@ -1571,14 +1630,14 @@ function renderPassportLibrary() {
 
 function groupCountryLibrary(country) {
   const library = {};
-  ["taste", "listen", "read", "see", "create"].forEach((category) => {
+  ["taste", "listen", "read", "see", "create", "fashion"].forEach((category) => {
     library[category] = getCategoryItems(category).map((item) => item.title);
   });
   return library;
 }
 
 function getCountryDiscoveryCount(country) {
-  return ["taste", "listen", "read", "see", "create"].reduce(
+  return ["taste", "listen", "read", "see", "create", "fashion"].reduce(
     (sum, category) => sum + getCategoryItems(category).length,
     0,
   );

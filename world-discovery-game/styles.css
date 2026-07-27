@@ -745,9 +745,9 @@ h1 {
 .globe-pin span { transform: rotate(45deg); }
 .globe-pin.unlocked { display: grid; }
 .globe-pin.active { background: var(--ink); }
-.pin-lebanon { left: 65%; top: 37%; }
-.pin-mexico { left: 28%; top: 55%; }
-.pin-japan { right: 10%; top: 37%; }
+.pin-lebanon { left: 60%; top: 38%; }
+.pin-mexico { left: 36%; top: 54%; }
+.pin-japan { right: 22%; top: 39%; }
 .passport-postcards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
 .passport-postcard { display: grid; gap: 12px; padding: 0 0 14px; overflow: hidden; text-align: left; border: 1px solid rgba(22,56,90,.12); border-radius: 18px; background: #fffaf0; box-shadow: 0 8px 0 rgba(22,56,90,.08); cursor: pointer; transition: transform .2s ease, box-shadow .2s ease; }
 .passport-postcard:hover, .passport-postcard.active { transform: translateY(-4px) rotate(-1deg); box-shadow: 0 12px 0 rgba(22,56,90,.12); }
