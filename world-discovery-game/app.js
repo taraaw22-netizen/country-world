@@ -1340,7 +1340,7 @@ const ui = {
   postcardStamp: document.querySelector("#postcard-stamp"),
   postcardCountry: document.querySelector("#postcard-country"),
   postcardCaption: document.querySelector("#postcard-caption"),
-  exploreButton: document.querySelector("#explore-button"),
+  postcardDiscoveryPicker: document.querySelector("#postcard-discovery-picker"),
   savePostcardButton: document.querySelector("#save-postcard-button"),
   newCountryButton: document.querySelector("#new-country-button"),
   revealPassportButton: document.querySelector("#reveal-passport-button"),
@@ -1357,7 +1357,6 @@ function boot() {
   loadWorldMap();
 
   ui.nextButton.addEventListener("click", resetRound);
-  ui.exploreButton.addEventListener("click", () => openCountry(state.activeCountry));
   ui.savePostcardButton.addEventListener("click", () => {
     ui.savePostcardButton.textContent = "Saved to passport";
     ui.savePostcardButton.classList.add("saved");
@@ -1371,6 +1370,12 @@ function boot() {
   ui.chips.forEach((chip) =>
     chip.addEventListener("click", () => selectDiscovery(chip.dataset.key)),
   );
+  ui.postcardDiscoveryPicker.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-key]");
+    if (!button) return;
+    openCountry(state.activeCountry);
+    selectDiscovery(button.dataset.key);
+  });
   ui.alternateStrip.addEventListener("click", (event) => {
     const button = event.target.closest("[data-category][data-index]");
     if (!button) return;
@@ -1383,13 +1388,13 @@ function boot() {
     }
     const button = event.target.closest("[data-country]");
     if (!button) return;
-    focusPassportCard(button.dataset.country);
+    openPostcard(button.dataset.country);
   });
   ui.passportMap.addEventListener("keydown", (event) => {
     const button = event.target.closest("[data-country]");
     if (!button || !["Enter", " "].includes(event.key)) return;
     event.preventDefault();
-    focusPassportCard(button.dataset.country);
+    openPostcard(button.dataset.country);
   });
   ui.passportLibraryList.addEventListener("click", (event) => {
     const button = event.target.closest("[data-country]");
@@ -1724,15 +1729,6 @@ function openPassport() {
 function closePassport() {
   ui.passportScreen.classList.add("hidden");
   ui.passportScreen.setAttribute("aria-hidden", "true");
-}
-
-function focusPassportCard(country) {
-  state.activeCountry = country;
-  renderPassport();
-  const card = ui.passportLibraryList.querySelector(`[data-country="${country}"]`);
-  if (!card) return;
-  card.scrollIntoView({ behavior: "smooth", block: "center" });
-  card.focus({ preventScroll: true });
 }
 
 function renderPassportLibrary() {
